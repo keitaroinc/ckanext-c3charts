@@ -33,10 +33,10 @@
                             checked=resource_view['aggregate'] is defined) }}
 
         <div class="alert alert-info">
-            <p>Select the keys for the data that needs to be charted.</p>
+            <p>{{ _('Select the keys for the data that needs to be charted.') }}</p>
         </div>
         <label class="control-label" id="key_fields_label">
-            <span title="This field is required" class="control-required">*</span> Data keys
+            <span title="{{ _('This field is required') }}" class="control-required">*</span> {{ _('Data keys') }}
         </label>
         <div class="c3charts-form-split-container" id="key_fields_container">
             {% for item in fields %}
@@ -52,10 +52,10 @@
 
         <div id="x-fields">
             <div class="alert alert-info" id="x_fields_help">
-                <p>Select the keys for the progression (x-axis) of the data values.</p>
+                <p>{{ _('Select the keys for the progression (x-axis) of the data values.') }}</p>
             </div>
             <label class="control-label" id="x_fields_label">
-                <span title="This field is required" class="control-required">*</span> Progress keys
+                <span title="{{ _('This field is required') }}" class="control-required">*</span> {{ _('Progress keys') }}
             </label>
             <div class="c3charts-form-split-container" id="x_fields_container">
                 {% for item in fields %}
@@ -67,7 +67,7 @@
         </div>
         <div id="table-chart">
             <div class="alert alert-info">
-                <p>Customize the look of the table chart.</p>
+                <p>{{ _('Customize the look of the table chart.') }}</p>
             </div>
             {{ form.textarea('header', id='header', value=resource_view['header'], label='Header text') }}
             {{ form.select('text_chart_number_action', label=_('Number value'), options=text_chart_number_actions,
