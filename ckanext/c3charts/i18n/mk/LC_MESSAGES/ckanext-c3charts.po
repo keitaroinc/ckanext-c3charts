@@ -9,135 +9,135 @@ msgstr ""
 "Project-Id-Version: ckanext-c3charts 0.3.0\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-05-30 23:02+0200\n"
-"PO-Revision-Date: 2018-05-30 23:02+0200\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2018-06-09 00:36+0200\n"
 "Language: mk\n"
 "Language-Team: mk <LL@li.org>\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.3.4\n"
+"Last-Translator: \n"
+"X-Generator: Poedit 2.0.8\n"
 
 #: ckanext/c3charts/plugin.py:41
 msgid "Chart builder"
-msgstr ""
+msgstr "Градител на дијаграм"
 
 #: ckanext/c3charts/plugin.py:63
 msgid "Bar Chart"
-msgstr ""
+msgstr "Бар-дијаграм"
 
 #: ckanext/c3charts/plugin.py:73
 msgid "Saturated"
-msgstr ""
+msgstr "Сатурирано"
 
 #: ckanext/c3charts/plugin.py:76
 msgid "Light"
-msgstr ""
+msgstr "Светло"
 
 #: ckanext/c3charts/plugin.py:79
 msgid "Pastel"
-msgstr ""
+msgstr "Пастелно"
 
 #: ckanext/c3charts/plugin.py:82
 msgid "Pastel 2"
-msgstr ""
+msgstr "Пастелно 2"
 
 #: ckanext/c3charts/plugin.py:85
 msgid "Contrast"
-msgstr ""
+msgstr "Контраст"
 
 #: ckanext/c3charts/plugin.py:87
 msgid "Substract last two entries"
-msgstr ""
+msgstr "Одземи ги последните два записи"
 
 #: ckanext/c3charts/plugin.py:89
 msgid "Average"
-msgstr ""
+msgstr "Просечно"
 
 #: ckanext/c3charts/plugin.py:91
 msgid "Show last"
-msgstr ""
+msgstr "Прикажи последно"
 
 #: ckanext/c3charts/plugin.py:92
 msgid "Hide"
-msgstr ""
+msgstr "Сокриј"
 
 #: ckanext/c3charts/plugin.py:93
 msgid "Right"
-msgstr ""
+msgstr "Десно"
 
 #: ckanext/c3charts/plugin.py:94
 msgid "Bottom"
-msgstr ""
+msgstr "Долу"
 
 #: ckanext/c3charts/templates/charts_form.html:11
 msgid "Chart Type"
-msgstr ""
+msgstr "Тип на дијаграм"
 
 #: ckanext/c3charts/templates/charts_form.html:14
 msgid "Color Pattern"
-msgstr ""
+msgstr "Шема на бои"
 
 #: ckanext/c3charts/templates/charts_form.html:17
 msgid "Legend"
-msgstr ""
+msgstr "Легенда"
 
 #: ckanext/c3charts/templates/charts_form.html:20
 msgid "Rotate axis"
-msgstr ""
+msgstr "Ротирај оска"
 
 #: ckanext/c3charts/templates/charts_form.html:23
 msgid "Show data labels"
-msgstr ""
+msgstr "Прикажи етикети за податоците"
 
 #: ckanext/c3charts/templates/charts_form.html:26
 msgid "Show grid on x axis"
-msgstr ""
+msgstr "Прикажи мрежа на x оска"
 
 #: ckanext/c3charts/templates/charts_form.html:29
 msgid "Show grid on y axis"
-msgstr ""
+msgstr "Прикажи мрежа на y оска"
 
 #: ckanext/c3charts/templates/charts_form.html:32
 msgid "Aggregate progress keys"
-msgstr ""
+msgstr "Агрегирајте копчиња за напредок"
 
 #: ckanext/c3charts/templates/charts_form.html:36
 msgid "Select the keys for the data that needs to be charted."
-msgstr ""
+msgstr "Изберете ги копчињата за податоците што треба да се прикажат во графикон."
 
 #: ckanext/c3charts/templates/charts_form.html:39
 #: ckanext/c3charts/templates/charts_form.html:58
 msgid "This field is required"
-msgstr ""
+msgstr "Ова поле е задолжително"
 
 #: ckanext/c3charts/templates/charts_form.html:39
 msgid "Data keys"
-msgstr ""
+msgstr "Клучеви за податоците"
 
 #: ckanext/c3charts/templates/charts_form.html:48
 msgid "Remap"
-msgstr ""
+msgstr "Ре-мапирање"
 
 #: ckanext/c3charts/templates/charts_form.html:51
 #: ckanext/c3charts/templates/charts_form.html:66
 msgid "Append Unit"
-msgstr ""
+msgstr "Додадете единица"
 
 #: ckanext/c3charts/templates/charts_form.html:55
 msgid "Select the keys for the progression (x-axis) of the data values."
-msgstr ""
+msgstr "Изберете ги копчињата за прогресија (x-оска) на вредностите на податоците."
 
 #: ckanext/c3charts/templates/charts_form.html:58
 msgid "Progress keys"
-msgstr ""
+msgstr "Клучеви за напредок"
 
 #: ckanext/c3charts/templates/charts_form.html:70
 msgid "Customize the look of the table chart."
-msgstr ""
+msgstr "Прилагодете го изгледот на табеларниот приказ."
 
 #: ckanext/c3charts/templates/charts_form.html:73
 msgid "Number value"
-msgstr ""
-
+msgstr "Вредност на бројот"
