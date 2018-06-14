@@ -1,7 +1,12 @@
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
+from ckan.logic import get_action
 import logging
 from ckan.lib.plugins import DefaultTranslation
+
+from ckanext.c3charts.model.featured_charts import setup as setup_featured_charts_model
+import ckanext.c3charts.helpers as helpers
+import ckanext.c3charts.logic as logic
 
 logger = logging.getLogger(__name__)
 not_empty = plugins.toolkit.get_validator('not_empty')
@@ -13,6 +18,8 @@ class ChartsPlugin(plugins.SingletonPlugin, DefaultTranslation):
     plugins.implements(plugins.IConfigurer, inherit=True)
     plugins.implements(plugins.IResourceView, inherit=True)
     plugins.implements(plugins.ITranslation)
+    plugins.implements(plugins.ITemplateHelpers)
+    plugins.implements(plugins.IActions)
 
     # IConfigurer
 
@@ -21,10 +28,13 @@ class ChartsPlugin(plugins.SingletonPlugin, DefaultTranslation):
         toolkit.add_public_directory(config, 'public')
         toolkit.add_resource('fanstatic', 'c3charts')
 
+        setup_featured_charts_model()
+
     def info(self):
         schema = {
             'chart_type': [not_empty],
             'key_fields': [not_empty],
+            'featured': [ignore_missing],
             'x_fields': [ignore_missing],
             'color_scheme': [not_empty],
             'header': [ignore_missing],
@@ -102,6 +112,18 @@ class ChartsPlugin(plugins.SingletonPlugin, DefaultTranslation):
     def form_template(self, context, data_dict):
         return 'charts_form.html'
 
+    # ITemplateHelpers
+    def get_helpers(self):
+        return {
+            'c3charts_featured_charts': helpers.c3charts_featured_charts
+        }
+
+    # ITActions
+    def get_actions(self):
+        orig_resource_view_create = get_action('resource_view_create')
+        return {
+            'resource_view_create': override_resource_view_create(orig_resource_view_create)
+        }
 
 def _get_fields_without_id(resource):
     fields = _get_fields(resource)
@@ -115,3 +137,20 @@ def _get_fields(resource):
     }
     result = plugins.toolkit.get_action('datastore_search')({}, data)
     return result['fields']
+
+
+
+def override_resource_view_create(orig_resource_view_create):
+
+    def _resource_view_create(context,data_dict):
+
+        result = orig_resource_view_create(context, data_dict)
+        if not context.get('preview'):
+            if data_dict.get('featured'):
+                package_id = result['package_id']
+                resource_id = result['resource_id']
+                view_id = result["id"]
+                logic.save_featured_chart(package_id, resource_id, view_id)
+        return result
+
+    return _resource_view_create

@@ -1,0 +1,1 @@
+from ckanext.c3charts.model.featured_charts import FeaturedCharts
