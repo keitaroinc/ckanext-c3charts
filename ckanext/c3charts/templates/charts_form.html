@@ -8,6 +8,9 @@
 
     {% block form %}
 
+        {{ form.checkbox('featured', id='featured', value='true', label=_('Include in Featured Charts'),
+            checked=resource_view['featured'] is defined) }}`
+
         {{ form.select('chart_type', label=_('Chart Type'), options=chart_types,
             selected=resource_view['chart_type'], is_required=True) }}
 
