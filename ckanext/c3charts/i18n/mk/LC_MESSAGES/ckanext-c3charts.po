@@ -124,7 +124,7 @@ msgstr "Ре-мапирање"
 #: ckanext/c3charts/templates/charts_form.html:51
 #: ckanext/c3charts/templates/charts_form.html:66
 msgid "Append Unit"
-msgstr "Додадете единица"
+msgstr "Додај мерна единица"
 
 #: ckanext/c3charts/templates/charts_form.html:55
 msgid "Select the keys for the progression (x-axis) of the data values."
