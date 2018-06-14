@@ -38,6 +38,13 @@ class FeaturedCharts(DomainObject):
             featured_chart = FeaturedCharts(resource_view_id=view_id, package_id=package_id, resource_id=resource_id)
             Session.add(featured_chart)
             Session.commit()
+    
+    @classmethod
+    def delete_from_featured_charts(cls, resource_view_id):
+        results = Session.query(FeaturedCharts).filter(FeaturedCharts.resource_view_id == resource_view_id).all()
+        for result in results:
+            Session.delete(result)
+        Session.commit()
 
 def setup():
     if featured_charts_table is None:

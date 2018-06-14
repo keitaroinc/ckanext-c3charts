@@ -113,14 +113,19 @@ class ChartsPlugin(plugins.SingletonPlugin):
     # ITemplateHelpers
     def get_helpers(self):
         return {
-            'c3charts_featured_charts': helpers.c3charts_featured_charts
+            'c3charts_featured_charts': helpers.c3charts_featured_charts,
+            'c3charts_render_featured_chart': helpers.c3charts_render_featured_chart
         }
     
     # ITActions
     def get_actions(self):
         orig_resource_view_create = get_action('resource_view_create')
+        orig_resource_view_delete = get_action('resource_view_delete')
+        orig_resource_view_update = get_action('resource_view_update')
         return {
-            'resource_view_create': override_resource_view_create(orig_resource_view_create)
+            'resource_view_create': override_resource_view_create(orig_resource_view_create),
+            'resource_view_delete': override_resource_view_delete(orig_resource_view_delete),
+            'resource_view_update': override_resource_view_update(orig_resource_view_update)
         }
 
 def _get_fields_without_id(resource):
@@ -152,3 +157,30 @@ def override_resource_view_create(orig_resource_view_create):
         return result
     
     return _resource_view_create
+
+
+def override_resource_view_delete(orig_resource_view_delete):
+
+    def _resource_view_delete(context, data_dict):
+        result = orig_resource_view_delete(context, data_dict)
+        logic.remove_from_featured_charts(data_dict['id'])
+        return result
+    
+    return _resource_view_delete
+
+
+def override_resource_view_update(orig_resource_view_update):
+
+    def _resource_view_update(context, data_dict):
+        result = orig_resource_view_update(context, data_dict)
+        if not context.get('preview'):
+            package_id = result['package_id']
+            resource_id = result['resource_id']    
+            view_id = result["id"]
+            if data_dict.get('featured'):
+                logic.save_featured_chart(package_id, resource_id, view_id)
+            else:
+                logic.remove_from_featured_charts(view_id)
+        return result
+    
+    return _resource_view_update
