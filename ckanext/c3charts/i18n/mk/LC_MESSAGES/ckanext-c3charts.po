@@ -8,67 +8,62 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-c3charts 0.3.0\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-05-30 23:02+0200\n"
+"POT-Creation-Date: 2018-06-18 18:05+0200\n"
 "PO-Revision-Date: 2018-06-09 00:36+0200\n"
+"Last-Translator: \n"
 "Language: mk\n"
 "Language-Team: mk <LL@li.org>\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.3.4\n"
-"Last-Translator: \n"
-"X-Generator: Poedit 2.0.8\n"
 
-#: ckanext/c3charts/plugin.py:41
+#: ckanext/c3charts/plugin.py:43
 msgid "Chart builder"
 msgstr "Градител на дијаграм"
 
-#: ckanext/c3charts/plugin.py:63
-msgid "Bar Chart"
-msgstr "Бар-дијаграм"
-
-#: ckanext/c3charts/plugin.py:73
+#: ckanext/c3charts/plugin.py:75
 msgid "Saturated"
 msgstr "Сатурирано"
 
-#: ckanext/c3charts/plugin.py:76
+#: ckanext/c3charts/plugin.py:78
 msgid "Light"
 msgstr "Светло"
 
-#: ckanext/c3charts/plugin.py:79
+#: ckanext/c3charts/plugin.py:81
 msgid "Pastel"
 msgstr "Пастелно"
 
-#: ckanext/c3charts/plugin.py:82
+#: ckanext/c3charts/plugin.py:84
 msgid "Pastel 2"
 msgstr "Пастелно 2"
 
-#: ckanext/c3charts/plugin.py:85
+#: ckanext/c3charts/plugin.py:87
 msgid "Contrast"
 msgstr "Контраст"
 
-#: ckanext/c3charts/plugin.py:87
+#: ckanext/c3charts/plugin.py:89
 msgid "Substract last two entries"
 msgstr "Одземи ги последните два записи"
 
-#: ckanext/c3charts/plugin.py:89
+#: ckanext/c3charts/plugin.py:91
 msgid "Average"
 msgstr "Просечно"
 
-#: ckanext/c3charts/plugin.py:91
+#: ckanext/c3charts/plugin.py:93
 msgid "Show last"
 msgstr "Прикажи последно"
 
-#: ckanext/c3charts/plugin.py:92
+#: ckanext/c3charts/plugin.py:94
 msgid "Hide"
 msgstr "Сокриј"
 
-#: ckanext/c3charts/plugin.py:93
+#: ckanext/c3charts/plugin.py:95
 msgid "Right"
 msgstr "Десно"
 
-#: ckanext/c3charts/plugin.py:94
+#: ckanext/c3charts/plugin.py:96
 msgid "Bottom"
 msgstr "Долу"
 
@@ -141,3 +136,8 @@ msgstr "Прилагодете го изгледот на табеларниот
 #: ckanext/c3charts/templates/charts_form.html:73
 msgid "Number value"
 msgstr "Вредност на бројот"
+
+#: ckanext/c3charts/templates/charts_view.html:16
+msgid "Export"
+msgstr "Преземи"
+

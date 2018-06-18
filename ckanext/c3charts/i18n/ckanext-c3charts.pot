@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-c3charts 0.3.0\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-05-30 23:02+0200\n"
+"POT-Creation-Date: 2018-06-18 18:05+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,55 +18,51 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.3.4\n"
 
-#: ckanext/c3charts/plugin.py:41
+#: ckanext/c3charts/plugin.py:43
 msgid "Chart builder"
 msgstr ""
 
-#: ckanext/c3charts/plugin.py:63
-msgid "Bar Chart"
-msgstr ""
-
-#: ckanext/c3charts/plugin.py:73
+#: ckanext/c3charts/plugin.py:75
 msgid "Saturated"
 msgstr ""
 
-#: ckanext/c3charts/plugin.py:76
+#: ckanext/c3charts/plugin.py:78
 msgid "Light"
 msgstr ""
 
-#: ckanext/c3charts/plugin.py:79
+#: ckanext/c3charts/plugin.py:81
 msgid "Pastel"
 msgstr ""
 
-#: ckanext/c3charts/plugin.py:82
+#: ckanext/c3charts/plugin.py:84
 msgid "Pastel 2"
 msgstr ""
 
-#: ckanext/c3charts/plugin.py:85
+#: ckanext/c3charts/plugin.py:87
 msgid "Contrast"
 msgstr ""
 
-#: ckanext/c3charts/plugin.py:87
+#: ckanext/c3charts/plugin.py:89
 msgid "Substract last two entries"
 msgstr ""
 
-#: ckanext/c3charts/plugin.py:89
+#: ckanext/c3charts/plugin.py:91
 msgid "Average"
 msgstr ""
 
-#: ckanext/c3charts/plugin.py:91
+#: ckanext/c3charts/plugin.py:93
 msgid "Show last"
 msgstr ""
 
-#: ckanext/c3charts/plugin.py:92
+#: ckanext/c3charts/plugin.py:94
 msgid "Hide"
 msgstr ""
 
-#: ckanext/c3charts/plugin.py:93
+#: ckanext/c3charts/plugin.py:95
 msgid "Right"
 msgstr ""
 
-#: ckanext/c3charts/plugin.py:94
+#: ckanext/c3charts/plugin.py:96
 msgid "Bottom"
 msgstr ""
 
@@ -138,5 +134,9 @@ msgstr ""
 
 #: ckanext/c3charts/templates/charts_form.html:73
 msgid "Number value"
+msgstr ""
+
+#: ckanext/c3charts/templates/charts_view.html:16
+msgid "Export"
 msgstr ""
 
