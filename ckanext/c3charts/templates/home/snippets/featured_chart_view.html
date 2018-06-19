@@ -5,7 +5,7 @@
       <a href="{{ featured_chart.resource_view_url }}">{{ featured_chart.title }}</a>
     </h4>
     <div data-module="c3charts_builder" data-module-resource-id="{{ featured_chart.resource_id }}" data-module-resource-view="{{ h.dump_json(featured_chart.resource_view) }}"
-      id="c3chart-{{ featured_chart['resource_id'] }}" class="c3chart">
+      id="c3chart-{{ featured_chart.resource_view_id }}" class="c3chart">
     </div>
   </div>
 </div>
