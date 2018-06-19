@@ -116,7 +116,8 @@ class ChartsPlugin(plugins.SingletonPlugin, DefaultTranslation):
     def get_helpers(self):
         return {
             'c3charts_featured_charts': helpers.c3charts_featured_charts,
-            'c3charts_render_featured_chart': helpers.c3charts_render_featured_chart
+            'c3charts_render_featured_chart': helpers.c3charts_render_featured_chart,
+            'c3charts_uuid': helpers.c3charts_uuid
         }
 
     # ITActions

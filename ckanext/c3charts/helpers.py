@@ -2,6 +2,7 @@ from ckanext.c3charts.model import FeaturedCharts
 from ckan.logic import get_action
 import ckan.lib.helpers as h
 import ckan.model as model
+from uuid import uuid4
 
 def c3charts_featured_charts(limit=3):
     resource_view_show = get_action('resource_view_show')
@@ -24,6 +25,11 @@ def c3charts_featured_charts(limit=3):
         chart['resource_view_url'] = h.url_for(str('/dataset/%s/resource/%s' % (chart['package_id'], chart['resource_id'])),view_id=chart['resource_view_id'])
     return charts
 
+
+def c3charts_uuid(id):
+    if not id:
+        return str(uuid4())
+    return "%s_%s" % (id, str(uuid4()))
 
 def _call_ignore_error(func, *args):
     try:
