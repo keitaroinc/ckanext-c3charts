@@ -51,14 +51,30 @@
   background-color: #eee;
 }
 
+.featured-charts{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 0;
+  padding-right: 0;
+}
+
 .featured-charts .item {
-  margin-top: 15px;
-  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  flex-basis: 300px;
+  flex-grow: 1;
+  flex-shrink: 1;
+  margin: 15px;
   padding: 15px;
+  min-height: 250px;
   background-color: #fff;
+  overflow: auto;
 }
 
 .featured-charts .title {
+  display: flex;
   margin: 0 0 15px;
 }
 
@@ -69,6 +85,10 @@
 .featured-charts iframe {
   width: 100%;
   height: 100%;
+}
+
+.featured-charts .c3{
+  height: 200px !important;
 }
 
 .featured-charts .btn-group-export {
