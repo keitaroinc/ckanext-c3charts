@@ -69,7 +69,7 @@ msgstr "Долу"
 
 #: ckanext/c3charts/templates/charts_form.html:11
 msgid "Include in Featured Charts"
-msgstr ""
+msgstr "Вклучи во истакнати графици"
 
 #: ckanext/c3charts/templates/charts_form.html:14
 msgid "Chart Type"
