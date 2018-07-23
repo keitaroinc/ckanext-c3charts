@@ -1,0 +1,146 @@
+# Albanian translations for ckanext-c3charts.
+# Copyright (C) 2018 ORGANIZATION
+# This file is distributed under the same license as the ckanext-c3charts
+# project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2018.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ckanext-c3charts 0.3.0\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2018-07-23 11:54+0200\n"
+"PO-Revision-Date: 2018-07-18 14:06+0200\n"
+"Last-Translator: \n"
+"Language: sq\n"
+"Language-Team: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.3.4\n"
+
+#: ckanext/c3charts/plugin.py:53
+msgid "Chart builder"
+msgstr "Ndërtuesi i Grafikëve"
+
+#: ckanext/c3charts/plugin.py:85
+msgid "Saturated"
+msgstr "I ngopur"
+
+#: ckanext/c3charts/plugin.py:88
+msgid "Light"
+msgstr "Dritë"
+
+#: ckanext/c3charts/plugin.py:91
+msgid "Pastel"
+msgstr "Pastel"
+
+#: ckanext/c3charts/plugin.py:94
+msgid "Pastel 2"
+msgstr "Pastel 2"
+
+#: ckanext/c3charts/plugin.py:97
+msgid "Contrast"
+msgstr "kontrast"
+
+#: ckanext/c3charts/plugin.py:99
+msgid "Substract last two entries"
+msgstr "Zbres dy shënimet e fundit"
+
+#: ckanext/c3charts/plugin.py:101
+msgid "Average"
+msgstr "Mesatare"
+
+#: ckanext/c3charts/plugin.py:103
+msgid "Show last"
+msgstr "Trego fundit"
+
+#: ckanext/c3charts/plugin.py:104
+msgid "Hide"
+msgstr "Fsheh"
+
+#: ckanext/c3charts/plugin.py:105
+msgid "Right"
+msgstr "E drejtë"
+
+#: ckanext/c3charts/plugin.py:106
+msgid "Bottom"
+msgstr "Fund"
+
+#: ckanext/c3charts/templates/charts_form.html:11
+msgid "Include in Featured Charts"
+msgstr "Përfshi në Listat e Përshtatshme"
+
+#: ckanext/c3charts/templates/charts_form.html:14
+msgid "Chart Type"
+msgstr "Lloji i grafikut"
+
+#: ckanext/c3charts/templates/charts_form.html:17
+msgid "Color Pattern"
+msgstr "Modeli i Ngjyrës"
+
+#: ckanext/c3charts/templates/charts_form.html:20
+msgid "Legend"
+msgstr "Legjendë"
+
+#: ckanext/c3charts/templates/charts_form.html:23
+msgid "Rotate axis"
+msgstr "Rrotullo aksin"
+
+#: ckanext/c3charts/templates/charts_form.html:26
+msgid "Show data labels"
+msgstr "Trego etiketat e të dhënave"
+
+#: ckanext/c3charts/templates/charts_form.html:29
+msgid "Show grid on x axis"
+msgstr "Trego rrjetin në aksin x"
+
+#: ckanext/c3charts/templates/charts_form.html:32
+msgid "Show grid on y axis"
+msgstr "Trego rrjetin në aksin y"
+
+#: ckanext/c3charts/templates/charts_form.html:35
+msgid "Aggregate progress keys"
+msgstr "Çelësat e agreguar të progresit"
+
+#: ckanext/c3charts/templates/charts_form.html:39
+msgid "Select the keys for the data that needs to be charted."
+msgstr "Zgjidhni çelësat për të dhënat që duhet të diagramohen."
+
+#: ckanext/c3charts/templates/charts_form.html:42
+#: ckanext/c3charts/templates/charts_form.html:61
+msgid "This field is required"
+msgstr "Kjo fushë duhet të plotësohet"
+
+#: ckanext/c3charts/templates/charts_form.html:42
+msgid "Data keys"
+msgstr "Tastet e të dhënave"
+
+#: ckanext/c3charts/templates/charts_form.html:51
+msgid "Remap"
+msgstr "Remap"
+
+#: ckanext/c3charts/templates/charts_form.html:54
+#: ckanext/c3charts/templates/charts_form.html:69
+msgid "Append Unit"
+msgstr "Shtoj Njësinë"
+
+#: ckanext/c3charts/templates/charts_form.html:58
+msgid "Select the keys for the progression (x-axis) of the data values."
+msgstr "Zgjidhni çelësat për progresin (x-axis) të vlerave të të dhënave."
+
+#: ckanext/c3charts/templates/charts_form.html:61
+msgid "Progress keys"
+msgstr "Çelësat e progresit"
+
+#: ckanext/c3charts/templates/charts_form.html:73
+msgid "Customize the look of the table chart."
+msgstr "Personalizoni pamjen e grafikës së tabelës"
+
+#: ckanext/c3charts/templates/charts_form.html:76
+msgid "Number value"
+msgstr "Vlera e numrit"
+
+#~ msgid "Export"
+#~ msgstr "Eksport"
+
