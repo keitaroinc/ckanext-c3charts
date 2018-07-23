@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-c3charts 0.3.0\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-06-18 18:05+0200\n"
+"POT-Creation-Date: 2018-07-23 11:54+0200\n"
 "PO-Revision-Date: 2018-06-09 00:36+0200\n"
 "Last-Translator: \n"
 "Language: mk\n"
@@ -19,125 +19,128 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.3.4\n"
 
-#: ckanext/c3charts/plugin.py:43
+#: ckanext/c3charts/plugin.py:53
 msgid "Chart builder"
 msgstr "Градител на дијаграм"
 
-#: ckanext/c3charts/plugin.py:75
+#: ckanext/c3charts/plugin.py:85
 msgid "Saturated"
 msgstr "Сатурирано"
 
-#: ckanext/c3charts/plugin.py:78
+#: ckanext/c3charts/plugin.py:88
 msgid "Light"
 msgstr "Светло"
 
-#: ckanext/c3charts/plugin.py:81
+#: ckanext/c3charts/plugin.py:91
 msgid "Pastel"
 msgstr "Пастелно"
 
-#: ckanext/c3charts/plugin.py:84
+#: ckanext/c3charts/plugin.py:94
 msgid "Pastel 2"
 msgstr "Пастелно 2"
 
-#: ckanext/c3charts/plugin.py:87
+#: ckanext/c3charts/plugin.py:97
 msgid "Contrast"
 msgstr "Контраст"
 
-#: ckanext/c3charts/plugin.py:89
+#: ckanext/c3charts/plugin.py:99
 msgid "Substract last two entries"
 msgstr "Одземи ги последните два записи"
 
-#: ckanext/c3charts/plugin.py:91
+#: ckanext/c3charts/plugin.py:101
 msgid "Average"
 msgstr "Просечно"
 
-#: ckanext/c3charts/plugin.py:93
+#: ckanext/c3charts/plugin.py:103
 msgid "Show last"
 msgstr "Прикажи последно"
 
-#: ckanext/c3charts/plugin.py:94
+#: ckanext/c3charts/plugin.py:104
 msgid "Hide"
 msgstr "Сокриј"
 
-#: ckanext/c3charts/plugin.py:95
+#: ckanext/c3charts/plugin.py:105
 msgid "Right"
 msgstr "Десно"
 
-#: ckanext/c3charts/plugin.py:96
+#: ckanext/c3charts/plugin.py:106
 msgid "Bottom"
 msgstr "Долу"
 
 #: ckanext/c3charts/templates/charts_form.html:11
+msgid "Include in Featured Charts"
+msgstr ""
+
+#: ckanext/c3charts/templates/charts_form.html:14
 msgid "Chart Type"
 msgstr "Тип на дијаграм"
 
-#: ckanext/c3charts/templates/charts_form.html:14
+#: ckanext/c3charts/templates/charts_form.html:17
 msgid "Color Pattern"
 msgstr "Шема на бои"
 
-#: ckanext/c3charts/templates/charts_form.html:17
+#: ckanext/c3charts/templates/charts_form.html:20
 msgid "Legend"
 msgstr "Легенда"
 
-#: ckanext/c3charts/templates/charts_form.html:20
+#: ckanext/c3charts/templates/charts_form.html:23
 msgid "Rotate axis"
 msgstr "Ротирај оска"
 
-#: ckanext/c3charts/templates/charts_form.html:23
+#: ckanext/c3charts/templates/charts_form.html:26
 msgid "Show data labels"
 msgstr "Прикажи етикети за податоците"
 
-#: ckanext/c3charts/templates/charts_form.html:26
+#: ckanext/c3charts/templates/charts_form.html:29
 msgid "Show grid on x axis"
 msgstr "Прикажи мрежа на x оска"
 
-#: ckanext/c3charts/templates/charts_form.html:29
+#: ckanext/c3charts/templates/charts_form.html:32
 msgid "Show grid on y axis"
 msgstr "Прикажи мрежа на y оска"
 
-#: ckanext/c3charts/templates/charts_form.html:32
+#: ckanext/c3charts/templates/charts_form.html:35
 msgid "Aggregate progress keys"
 msgstr "Агрегирајте копчиња за напредок"
 
-#: ckanext/c3charts/templates/charts_form.html:36
+#: ckanext/c3charts/templates/charts_form.html:39
 msgid "Select the keys for the data that needs to be charted."
 msgstr "Изберете ги копчињата за податоците што треба да се прикажат во графикон."
 
-#: ckanext/c3charts/templates/charts_form.html:39
-#: ckanext/c3charts/templates/charts_form.html:58
+#: ckanext/c3charts/templates/charts_form.html:42
+#: ckanext/c3charts/templates/charts_form.html:61
 msgid "This field is required"
 msgstr "Ова поле е задолжително"
 
-#: ckanext/c3charts/templates/charts_form.html:39
+#: ckanext/c3charts/templates/charts_form.html:42
 msgid "Data keys"
 msgstr "Клучеви за податоците"
 
-#: ckanext/c3charts/templates/charts_form.html:48
+#: ckanext/c3charts/templates/charts_form.html:51
 msgid "Remap"
 msgstr "Ре-мапирање"
 
-#: ckanext/c3charts/templates/charts_form.html:51
-#: ckanext/c3charts/templates/charts_form.html:66
+#: ckanext/c3charts/templates/charts_form.html:54
+#: ckanext/c3charts/templates/charts_form.html:69
 msgid "Append Unit"
 msgstr "Додај мерна единица"
 
-#: ckanext/c3charts/templates/charts_form.html:55
+#: ckanext/c3charts/templates/charts_form.html:58
 msgid "Select the keys for the progression (x-axis) of the data values."
 msgstr "Изберете ги копчињата за прогресија (x-оска) на вредностите на податоците."
 
-#: ckanext/c3charts/templates/charts_form.html:58
+#: ckanext/c3charts/templates/charts_form.html:61
 msgid "Progress keys"
 msgstr "Клучеви за напредок"
 
-#: ckanext/c3charts/templates/charts_form.html:70
+#: ckanext/c3charts/templates/charts_form.html:73
 msgid "Customize the look of the table chart."
 msgstr "Прилагодете го изгледот на табеларниот приказ."
 
-#: ckanext/c3charts/templates/charts_form.html:73
+#: ckanext/c3charts/templates/charts_form.html:76
 msgid "Number value"
 msgstr "Вредност на бројот"
 
-#: ckanext/c3charts/templates/charts_view.html:16
-msgid "Export"
-msgstr "Преземи"
+#~ msgid "Export"
+#~ msgstr "Преземи"
 
