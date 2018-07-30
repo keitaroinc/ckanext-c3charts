@@ -9,7 +9,8 @@ def c3charts_featured_charts(limit=3):
     resource_show = get_action('resource_show')
     package_show = get_action('package_show')
     charts = FeaturedCharts.get_featured_charts(limit) or []
-    context = {'model': model}
+    context = {'model': model, 'ignore_auth': True}
+    result_charts = []
     for chart in charts:
         resource = None
         dataset = None
@@ -18,12 +19,15 @@ def c3charts_featured_charts(limit=3):
         view = _call_ignore_error(resource_view_show, context, {'id': chart['resource_view_id']})
         resource = _call_ignore_error (resource_show, context, {'id': chart['resource_id']})
         dataset = _call_ignore_error(package_show, context, {'id': chart['package_id']})
+        if view is None or resource is None or dataset is None:
+            continue
         chart['title'] = view.get('title')
         chart['resource_view'] = view
         chart['resource'] = resource
         chart['dataset'] = dataset
         chart['resource_view_url'] = h.url_for(str('/dataset/%s/resource/%s' % (chart['package_id'], chart['resource_id'])),view_id=chart['resource_view_id'])
-    return charts
+        result_charts.append(chart)
+    return result_charts
 
 
 def c3charts_uuid(id):
