@@ -26,13 +26,13 @@ class FeaturedCharts(DomainObject):
         results = Session.query(cls).\
             join(Package, cls.package_id == Package.id).\
             order_by(Package.metadata_modified.desc()).\
+            filter(Package.private == False).\
             limit(limit).\
             all()
         return [d.table_dictize(result, {'model': FeaturedCharts}) for result in results]
 
     @classmethod
     def save_featured_chart(cls, package_id, resource_id, view_id):
-        print "Exists ? package_id=",package_id, "resource_id=", resource_id, "view_id=", view_id
         already_exists = Session.query(exists().\
                         where(FeaturedCharts.package_id == package_id).\
                         where(FeaturedCharts.resource_id == resource_id).\
@@ -41,9 +41,6 @@ class FeaturedCharts(DomainObject):
             featured_chart = FeaturedCharts(resource_view_id=view_id, package_id=package_id, resource_id=resource_id)
             Session.add(featured_chart)
             Session.commit()
-            print " => Saved (?)"
-        else:
-            print "  => Already exists", already_exists
     
     @classmethod
     def delete_from_featured_charts(cls, resource_view_id):
