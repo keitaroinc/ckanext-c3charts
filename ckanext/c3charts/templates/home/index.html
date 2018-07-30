@@ -9,11 +9,9 @@
 <div class="featured-charts-wrap">
   <div class="featured-charts container">
     {% block featured_charts %}
-    <div class="row">
-      {%- for featured_chart in h.c3charts_featured_charts() -%}
+      {%- for featured_chart in h.c3charts_featured_charts(4) -%}
         {% snippet 'home/snippets/featured_chart_view.html', featured_chart=featured_chart %}
       {%- endfor -%}
-    </div>
     {% endblock %}
   </div>
 </div>
