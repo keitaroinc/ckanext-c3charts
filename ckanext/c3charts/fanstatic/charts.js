@@ -55,24 +55,26 @@ this.ckan.views.c3charts = this.ckan.views.c3charts || {};
         var positionX = 'outer-middle';
         var positionY = 'outer-middle';
 
+        var _ = ckan.i18n.ngettext
+
         switch (chart_type) {
-            case 'Pie Chart':
+            case _('Pie Chart'):
                 chart_type = 'pie';
                 break;
-            case 'Donut Chart':
+            case _('Donut Chart'):
                 chart_type = 'donut';
                 break;
-            case 'Bar Chart':
+            case _('Bar Chart'):
                 chart_type = 'bar';
                 positionY = 'outer-center';
                 break;
-            case 'Stacked Bar Chart':
+            case _('Stacked Bar Chart'):
                 chart_type = 'bar';
                 break;
-            case 'Line Chart':
+            case _('Line Chart'):
                 chart_type = 'line';
                 break;
-            case 'Spline Chart':
+            case _('Spline Chart'):
                 chart_type = 'spline';
                 positionX = 'outer-center';
                 break;
@@ -158,7 +160,7 @@ this.ckan.views.c3charts = this.ckan.views.c3charts || {};
                     value: key_fields
                 },
                 type: chart_type,
-                groups: resourceView.chart_type != 'Stacked Bar Chart' || [key_fields],
+                groups: resourceView.chart_type != _('Stacked Bar Chart') || [key_fields],
                 labels: !! resourceView.data_labels
             },
             padding: {

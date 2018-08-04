@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-c3charts 0.3.0\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-07-23 11:54+0200\n"
+"POT-Creation-Date: 2018-08-02 23:43+0200\n"
 "PO-Revision-Date: 2018-06-09 00:36+0200\n"
 "Last-Translator: \n"
 "Language: mk\n"
@@ -23,47 +23,72 @@ msgstr ""
 msgid "Chart builder"
 msgstr "Градител на дијаграм"
 
-#: ckanext/c3charts/plugin.py:85
+#: ckanext/c3charts/fanstatic/charts.js:67 ckanext/c3charts/plugin.py:75
+msgid "Bar Chart"
+msgstr "Бар график"
+
+#: ckanext/c3charts/fanstatic/charts.js:71
+#: ckanext/c3charts/fanstatic/charts.js:163 ckanext/c3charts/plugin.py:76
+msgid "Stacked Bar Chart"
+msgstr "Нареден бар график"
+
+#: ckanext/c3charts/fanstatic/charts.js:64 ckanext/c3charts/plugin.py:77
+msgid "Donut Chart"
+msgstr "Крофна график"
+
+#: ckanext/c3charts/fanstatic/charts.js:74 ckanext/c3charts/plugin.py:78
+msgid "Line Chart"
+msgstr "Линија график"
+
+#: ckanext/c3charts/fanstatic/charts.js:61 ckanext/c3charts/plugin.py:79
+msgid "Pie Chart"
+msgstr "Пита график"
+
+#: ckanext/c3charts/fanstatic/charts.js:77 ckanext/c3charts/plugin.py:80
+msgid "Spline Chart"
+msgstr "Сплајн график"
+
+#: ckanext/c3charts/plugin.py:83
 msgid "Saturated"
 msgstr "Сатурирано"
 
-#: ckanext/c3charts/plugin.py:88
+#: ckanext/c3charts/plugin.py:86
 msgid "Light"
 msgstr "Светло"
 
-#: ckanext/c3charts/plugin.py:91
+#: ckanext/c3charts/plugin.py:89
 msgid "Pastel"
 msgstr "Пастелно"
 
-#: ckanext/c3charts/plugin.py:94
+#: ckanext/c3charts/plugin.py:92
 msgid "Pastel 2"
 msgstr "Пастелно 2"
 
-#: ckanext/c3charts/plugin.py:97
+#: ckanext/c3charts/plugin.py:95
 msgid "Contrast"
 msgstr "Контраст"
 
-#: ckanext/c3charts/plugin.py:99
+#: ckanext/c3charts/plugin.py:97
 msgid "Substract last two entries"
 msgstr "Одземи ги последните два записи"
 
-#: ckanext/c3charts/plugin.py:101
+#: ckanext/c3charts/plugin.py:99
 msgid "Average"
 msgstr "Просечно"
 
-#: ckanext/c3charts/plugin.py:103
+#: ckanext/c3charts/plugin.py:101
 msgid "Show last"
 msgstr "Прикажи последно"
 
-#: ckanext/c3charts/plugin.py:104
+#: ckanext/c3charts/plugin.py:102
 msgid "Hide"
 msgstr "Сокриј"
 
-#: ckanext/c3charts/plugin.py:105
+#: ckanext/c3charts/plugin.py:103
 msgid "Right"
 msgstr "Десно"
 
-#: ckanext/c3charts/plugin.py:106
+#: ckanext/c3charts/plugin.py:104
 msgid "Bottom"
 msgstr "Долу"
 

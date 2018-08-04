@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-c3charts 0.3.0\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-07-23 11:54+0200\n"
+"POT-Creation-Date: 2018-08-02 23:43+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,47 +22,72 @@ msgstr ""
 msgid "Chart builder"
 msgstr ""
 
-#: ckanext/c3charts/plugin.py:85
+#: ckanext/c3charts/fanstatic/charts.js:67 ckanext/c3charts/plugin.py:75
+msgid "Bar Chart"
+msgstr ""
+
+#: ckanext/c3charts/fanstatic/charts.js:71 ckanext/c3charts/fanstatic/charts.js:163
+#: ckanext/c3charts/plugin.py:76
+msgid "Stacked Bar Chart"
+msgstr ""
+
+#: ckanext/c3charts/fanstatic/charts.js:64 ckanext/c3charts/plugin.py:77
+msgid "Donut Chart"
+msgstr ""
+
+#: ckanext/c3charts/fanstatic/charts.js:74 ckanext/c3charts/plugin.py:78
+msgid "Line Chart"
+msgstr ""
+
+#: ckanext/c3charts/fanstatic/charts.js:61 ckanext/c3charts/plugin.py:79
+msgid "Pie Chart"
+msgstr ""
+
+#: ckanext/c3charts/fanstatic/charts.js:77 ckanext/c3charts/plugin.py:80
+msgid "Spline Chart"
+msgstr ""
+
+#: ckanext/c3charts/plugin.py:83
 msgid "Saturated"
 msgstr ""
 
-#: ckanext/c3charts/plugin.py:88
+#: ckanext/c3charts/plugin.py:86
 msgid "Light"
 msgstr ""
 
-#: ckanext/c3charts/plugin.py:91
+#: ckanext/c3charts/plugin.py:89
 msgid "Pastel"
 msgstr ""
 
-#: ckanext/c3charts/plugin.py:94
+#: ckanext/c3charts/plugin.py:92
 msgid "Pastel 2"
 msgstr ""
 
-#: ckanext/c3charts/plugin.py:97
+#: ckanext/c3charts/plugin.py:95
 msgid "Contrast"
 msgstr ""
 
-#: ckanext/c3charts/plugin.py:99
+#: ckanext/c3charts/plugin.py:97
 msgid "Substract last two entries"
 msgstr ""
 
-#: ckanext/c3charts/plugin.py:101
+#: ckanext/c3charts/plugin.py:99
 msgid "Average"
 msgstr ""
 
-#: ckanext/c3charts/plugin.py:103
+#: ckanext/c3charts/plugin.py:101
 msgid "Show last"
 msgstr ""
 
-#: ckanext/c3charts/plugin.py:104
+#: ckanext/c3charts/plugin.py:102
 msgid "Hide"
 msgstr ""
 
-#: ckanext/c3charts/plugin.py:105
+#: ckanext/c3charts/plugin.py:103
 msgid "Right"
 msgstr ""
 
-#: ckanext/c3charts/plugin.py:106
+#: ckanext/c3charts/plugin.py:104
 msgid "Bottom"
 msgstr ""
 
