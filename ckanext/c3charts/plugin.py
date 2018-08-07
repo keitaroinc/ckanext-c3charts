@@ -1,6 +1,6 @@
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
-from ckan.logic import get_action
+from ckan.logic import get_action, chained_action
 import logging
 from ckan.lib.plugins import DefaultTranslation
 
@@ -200,8 +200,20 @@ def override_resource_delete(orig_resource_delete):
         resource_id = data_dict.get('id')
         if resource_id:
             logic.remove_all_featured_charts_for_resource(resource_id)
+        print "c3charts - delete resource"
         return result
-    return _resource_delete
+    
+    overriden_action = _resource_delete
+
+    if hasattr(orig_resource_delete, 'chained_action'):
+
+        @chained_action
+        def _resource_delete_chained(action, context, data_dict):
+            return _resource_delete(context, data_dict)
+        
+        overriden_action = _resource_delete_chained
+
+    return overriden_action
 
 
 def override_package_delete(orig_package_delete):
