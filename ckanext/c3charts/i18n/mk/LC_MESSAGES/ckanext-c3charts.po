@@ -25,28 +25,28 @@ msgstr "Градител на дијаграм"
 
 #: ckanext/c3charts/fanstatic/charts.js:67 ckanext/c3charts/plugin.py:75
 msgid "Bar Chart"
-msgstr "Бар график"
+msgstr "бар график"
 
 #: ckanext/c3charts/fanstatic/charts.js:71
 #: ckanext/c3charts/fanstatic/charts.js:163 ckanext/c3charts/plugin.py:76
 msgid "Stacked Bar Chart"
-msgstr "Нареден бар график"
+msgstr "стек бар график"
 
 #: ckanext/c3charts/fanstatic/charts.js:64 ckanext/c3charts/plugin.py:77
 msgid "Donut Chart"
-msgstr "Крофна график"
+msgstr "крофна график"
 
 #: ckanext/c3charts/fanstatic/charts.js:74 ckanext/c3charts/plugin.py:78
 msgid "Line Chart"
-msgstr "Линија график"
+msgstr "линија график"
 
 #: ckanext/c3charts/fanstatic/charts.js:61 ckanext/c3charts/plugin.py:79
 msgid "Pie Chart"
-msgstr "Пита график"
+msgstr "пита график"
 
 #: ckanext/c3charts/fanstatic/charts.js:77 ckanext/c3charts/plugin.py:80
 msgid "Spline Chart"
-msgstr "Сплајн график"
+msgstr "сплајн график"
 
 #: ckanext/c3charts/plugin.py:83
 msgid "Saturated"
