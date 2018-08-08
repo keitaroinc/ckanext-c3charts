@@ -57,7 +57,9 @@ this.ckan.views.c3charts = this.ckan.views.c3charts || {};
 
         var _ = ckan.i18n.ngettext
 
-        switch (chart_type) {
+        console.log(chart_type)
+
+        switch (_(chart_type)) {
             case _('Pie Chart'):
                 chart_type = 'pie';
                 break;
@@ -65,6 +67,7 @@ this.ckan.views.c3charts = this.ckan.views.c3charts || {};
                 chart_type = 'donut';
                 break;
             case _('Bar Chart'):
+            console.log('vlegva')
                 chart_type = 'bar';
                 positionY = 'outer-center';
                 break;
