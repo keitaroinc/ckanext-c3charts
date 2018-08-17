@@ -94,8 +94,10 @@ setup(
     entry_points='''
         [ckan.plugins]
         c3charts=ckanext.c3charts.plugin:ChartsPlugin
-	[babel.extractors]
-	ckan = ckan.lib.extract:extract_ckan
+        [babel.extractors]
+        ckan = ckan.lib.extract:extract_ckan
+        [paste.paster_command]
+        initdb=ckanext.c3charts.commands:InitDB
     ''',
 
     # If you are changing from the default layout of your extension, you may

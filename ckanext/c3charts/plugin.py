@@ -4,7 +4,6 @@ from ckan.logic import get_action, chained_action
 import logging
 from ckan.lib.plugins import DefaultTranslation
 
-from ckanext.c3charts.model.featured_charts import setup as setup_featured_charts_model
 import ckanext.c3charts.helpers as helpers
 import ckanext.c3charts.logic as logic
 
@@ -27,8 +26,6 @@ class ChartsPlugin(plugins.SingletonPlugin, DefaultTranslation):
         toolkit.add_template_directory(config, 'templates')
         toolkit.add_public_directory(config, 'public')
         toolkit.add_resource('fanstatic', 'c3charts')
-
-        setup_featured_charts_model()
 
     def info(self):
         schema = {
@@ -198,7 +195,6 @@ def override_resource_delete(orig_resource_delete):
         resource_id = data_dict.get('id')
         if resource_id:
             logic.remove_all_featured_charts_for_resource(resource_id)
-        print "c3charts - delete resource"
         return result
     
     overriden_action = _resource_delete

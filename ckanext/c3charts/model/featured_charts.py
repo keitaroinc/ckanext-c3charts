@@ -8,6 +8,7 @@ from ckan.model.types import make_uuid
 from ckan.model.domain_object import DomainObject
 from ckan.model import Package
 import ckan.lib.dictization as d
+from ckan import model
 
 log = logging.getLogger(__name__)
 
@@ -15,8 +16,6 @@ log = logging.getLogger(__name__)
 __all__ = [
     'FeaturedCharts', 'featured_charts_table',
 ]
-
-featured_charts_table = None
 
 
 class FeaturedCharts(DomainObject):
@@ -63,30 +62,18 @@ class FeaturedCharts(DomainObject):
             Session.delete(result)
         Session.commit()
 
+
+featured_charts_table = Table('ckanext_c3charts_featured_charts', metadata,
+                            Column('id', types.UnicodeText, primary_key=True, default=make_uuid),
+                            Column('resource_view_id', types.UnicodeText),
+                            Column('resource_id', types.UnicodeText),
+                            Column('package_id', types.UnicodeText)
+                            )
+
+mapper(
+    FeaturedCharts,
+    featured_charts_table
+)
+
 def setup():
-    if featured_charts_table is None:
-        define_featured_charts_table()
-        log.debug('Featured charts table defined in memory')
-
-        if not featured_charts_table.exists():
-            featured_charts_table.create()
-            log.debug('Featured charts created')
-        else:
-            log.debug('Featured charts table already created')
-    else:
-        log.debug('Featured charts table already exist')
-
-
-def define_featured_charts_table():
-    global featured_charts_table
-    featured_charts_table = Table('ckanext_c3charts_featured_charts', metadata,
-                             Column('id', types.UnicodeText, primary_key=True, default=make_uuid),
-                             Column('resource_view_id', types.UnicodeText),
-                             Column('resource_id', types.UnicodeText),
-                             Column('package_id', types.UnicodeText)
-                             )
-
-    mapper(
-        FeaturedCharts,
-        featured_charts_table
-    )
+    metadata.create_all(model.meta.engine)
