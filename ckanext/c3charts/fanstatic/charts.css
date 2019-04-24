@@ -14,7 +14,7 @@
 
 .c3chart {
   background: #FFFFFF;
-  font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: inherit;
   position: relative;
   padding: 0;
   margin: 0;
