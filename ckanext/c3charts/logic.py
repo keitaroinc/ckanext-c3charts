@@ -1,4 +1,4 @@
-from ckanext.c3charts.model import FeaturedCharts
+from ckanext.c3charts.model.featured_charts import FeaturedCharts
 
 
 def save_featured_chart(package_id, resource_id, view_id):

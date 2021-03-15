@@ -16,7 +16,7 @@ def test_view_shown_on_resource_page():
     resource = factories.Resource(package_id=dataset['id'],
                                   url='http://some.website.html',)
 
-    datastore_resource = p.toolkit.get_action('datastore_create')(
+    p.toolkit.get_action('datastore_create')(
        {'user': sysadmin.get('name')},
        {'resource_id': resource.get('id'), 'force': True}
     )

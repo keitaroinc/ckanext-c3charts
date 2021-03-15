@@ -102,8 +102,8 @@ class ChartsPlugin(plugins.SingletonPlugin, DefaultTranslation):
                                               {'value': 'last',
                                                'text': toolkit._('Show last')}],
                 'legend_options': [{'text': toolkit._('Hide'), 'value': 'hide'},
-                                     {'text': toolkit._('Right'), 'value': 'right'},
-                                     {'text': toolkit._('Bottom'), 'value': 'bottom'}]
+                                   {'text': toolkit._('Right'), 'value': 'right'},
+                                   {'text': toolkit._('Bottom'), 'value': 'bottom'}]
                 }
 
     def view_template(self, context, data_dict):
@@ -153,7 +153,7 @@ def _get_fields(resource):
 
 def override_resource_view_create(orig_resource_view_create):
 
-    def _resource_view_create(context,data_dict):
+    def _resource_view_create(context, data_dict):
         result = orig_resource_view_create(context, data_dict)
         if not context.get('preview'):
             if data_dict.get('featured'):
