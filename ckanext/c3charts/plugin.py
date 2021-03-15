@@ -26,7 +26,7 @@ class ChartsPlugin(plugins.SingletonPlugin, DefaultTranslation):
     def update_config(self, config):
         toolkit.add_template_directory(config, 'templates')
         toolkit.add_public_directory(config, 'public')
-        toolkit.add_resource('fanstatic', 'c3charts')
+        toolkit.add_resource('assets', 'c3charts')
 
         setup_featured_charts_model()
 
