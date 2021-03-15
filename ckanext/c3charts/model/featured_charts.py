@@ -1,6 +1,5 @@
 import logging
 
-import ckan.logic as l
 from sqlalchemy import orm, types, ForeignKey, Column, Table, exists
 
 from ckan.model.meta import metadata, mapper, Session
@@ -33,10 +32,10 @@ class FeaturedCharts(DomainObject):
 
     @classmethod
     def save_featured_chart(cls, package_id, resource_id, view_id):
-        already_exists = Session.query(exists().\
-                        where(FeaturedCharts.package_id == package_id).\
-                        where(FeaturedCharts.resource_id == resource_id).\
-                        where(FeaturedCharts.resource_view_id == view_id)).scalar()
+        already_exists = Session.query(exists().
+                                       where(FeaturedCharts.package_id == package_id).
+                                       where(FeaturedCharts.resource_id == resource_id).
+                                       where(FeaturedCharts.resource_view_id == view_id)).scalar()
         if not already_exists:
             featured_chart = FeaturedCharts(resource_view_id=view_id, package_id=package_id, resource_id=resource_id)
             Session.add(featured_chart)
@@ -44,24 +43,28 @@ class FeaturedCharts(DomainObject):
     
     @classmethod
     def delete_from_featured_charts(cls, resource_view_id):
-        results = Session.query(FeaturedCharts).filter(FeaturedCharts.resource_view_id == resource_view_id).all()
+        results = Session.query(FeaturedCharts).\
+            filter(FeaturedCharts.resource_view_id == resource_view_id).all()
         for result in results:
             Session.delete(result)
         Session.commit()
     
     @classmethod
     def delete_from_featured_charts_by_resource(cls, resource_id):
-        results = Session.query(FeaturedCharts).filter(FeaturedCharts.resource_id == resource_id).all()
+        results = Session.query(FeaturedCharts).\
+            filter(FeaturedCharts.resource_id == resource_id).all()
         for result in results:
             Session.delete(result)
         Session.commit()
     
     @classmethod
     def delete_from_featured_charts_by_package(cls, package_id):
-        results = Session.query(FeaturedCharts).filter(FeaturedCharts.package_id == package_id).all()
+        results = Session.query(FeaturedCharts).\
+            filter(FeaturedCharts.package_id == package_id).all()
         for result in results:
             Session.delete(result)
         Session.commit()
+
 
 def setup():
     if featured_charts_table is None:
@@ -80,11 +83,10 @@ def setup():
 def define_featured_charts_table():
     global featured_charts_table
     featured_charts_table = Table('ckanext_c3charts_featured_charts', metadata,
-                             Column('id', types.UnicodeText, primary_key=True, default=make_uuid),
-                             Column('resource_view_id', types.UnicodeText),
-                             Column('resource_id', types.UnicodeText),
-                             Column('package_id', types.UnicodeText)
-                             )
+                                  Column('id', types.UnicodeText, primary_key=True, default=make_uuid),
+                                  Column('resource_view_id', types.UnicodeText),
+                                  Column('resource_id', types.UnicodeText),
+                                  Column('package_id', types.UnicodeText))
 
     mapper(
         FeaturedCharts,

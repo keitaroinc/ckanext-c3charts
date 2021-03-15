@@ -136,6 +136,7 @@ class ChartsPlugin(plugins.SingletonPlugin, DefaultTranslation):
 
         }
 
+
 def _get_fields_without_id(resource):
     fields = _get_fields(resource)
     return [{'value': v['id']} for v in fields if v['id'] != '_id']
@@ -148,7 +149,6 @@ def _get_fields(resource):
     }
     result = plugins.toolkit.get_action('datastore_search')({}, data)
     return result['fields']
-
 
 
 def override_resource_view_create(orig_resource_view_create):
