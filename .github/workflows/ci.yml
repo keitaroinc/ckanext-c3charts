@@ -2,11 +2,11 @@ name: CI
 
 on:
   push:
-    branches: main
+    branches: ckan-2.9
     tags:
       - 'v*'
   pull_request:
-    branches: main
+    branches: ckan-2.9
 
 env:
   CKANVERSION: 2.9
