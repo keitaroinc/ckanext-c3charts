@@ -2,7 +2,6 @@ import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 from ckan.logic import get_action
 import logging
-from ckan.lib.plugins import DefaultTranslation
 
 from ckanext.c3charts.model.featured_charts import setup as setup_featured_charts_model
 import ckanext.c3charts.helpers as helpers

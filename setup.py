@@ -84,7 +84,7 @@ setup(
     entry_points='''
         [ckan.plugins]
         c3charts=ckanext.c3charts.plugin:ChartsPlugin
-        
+
         [babel.extractors]
         ckan = ckan.lib.extract:extract_ckan
     ''',
