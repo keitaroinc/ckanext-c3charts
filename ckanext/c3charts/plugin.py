@@ -14,10 +14,9 @@ ignore_missing = plugins.toolkit.get_validator('ignore_missing')
 ignore_empty = plugins.toolkit.get_validator('ignore_empty')
 
 
-class ChartsPlugin(plugins.SingletonPlugin, DefaultTranslation):
+class ChartsPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IConfigurer, inherit=True)
     plugins.implements(plugins.IResourceView, inherit=True)
-    plugins.implements(plugins.ITranslation)
     plugins.implements(plugins.ITemplateHelpers)
     plugins.implements(plugins.IActions)
 
