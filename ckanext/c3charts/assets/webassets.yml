@@ -2,19 +2,16 @@ c3-controls-css:
   output: c3charts/%(version)s_c3-controls.css
   contents:
     - c3controls.css
-  filters: cssrewrite
 
 c3-css:
   output: c3charts/%(version)s_c3.css
   contents:
     - vendor/c3.css
-  filters: cssrewrite
 
 charts-css:
   output: c3charts/%(version)s_charts.css
   contents:
     - charts.css
-  filters: cssrewrite
 
 main:
   output: c3charts/%(version)s_main.js
