@@ -1,0 +1,51 @@
+c3-controls-css:
+  output: c3charts/%(version)s_c3-controls.css
+  contents:
+    - c3controls.css
+
+c3-css:
+  output: c3charts/%(version)s_c3.css
+  contents:
+    - vendor/c3.css
+
+charts-css:
+  output: c3charts/%(version)s_charts.css
+  contents:
+    - charts.css
+
+main:
+  output: c3charts/%(version)s_main.js
+  filters: rjsmin
+  contents:
+    - vendor/d3.js
+    - vendor/c3.js
+    - vendor/backend.ckan.js
+    - charts.js
+    - charts_view.js
+  extra:
+    preload:
+      - base/main
+      - c3charts/c3-css
+      - c3charts/charts-css
+
+form:
+  output: c3charts/%(version)s_form.js
+  filters: rjsmin
+  contents:
+    - charts_form.js
+  extra:
+    preload:
+      - base/main
+      - c3charts/c3-controls-css
+
+export-to-png:
+  output: c3charts/%(version)s_export-to-png.js
+  filters: rjsmin
+  contents:
+    - modules/export-to-png.js
+
+save-svg-png:
+  output: c3charts/%(version)s_save-svg-png.js
+  filters: rjsmin
+  contents:
+    - vendor/save-svg-png.js

@@ -1,7 +1,6 @@
-# Ckan Charts
+[![CI][]][1] [![Coverage][]][2] [![Gitter][]][3] [![Python][]][4] [![CKAN][]][5]
 
-## [![Build Status](https://travis-ci.org/ViderumGlobal/ckanext-c3charts.svg?branch=master)](https://travis-ci.org/ViderumGlobal/ckanext-c3charts)
-## [![Coverage Status](https://coveralls.io/repos/github/ViderumGlobal/ckanext-c3charts/badge.svg?branch=master)](https://coveralls.io/github/ViderumGlobal/ckanext-c3charts?branch=master)
+# Ckan Charts
 
 This extension provides chart library that enables deeper integration of charts into CKAN applications.
 
@@ -31,13 +30,9 @@ pip install ckanext-c3charts
 sudo service apache2 reload
 ```
 
+## Config settings
 
-## Config Settings
-
-These are the required configuration options used by the extension:
-```
-
-```
+None at present
 
 ## Development Installation
 
@@ -51,23 +46,23 @@ python setup.py develop
 pip install -r dev-requirements.txt
 ```
 
-## Running the Tests
+## Tests
 
-To run the tests, first make sure that you have installed the required
-development dependencies in CKAN, which can be done by running the following
-command in the CKAN's `src` directory:
+To run the tests, do:
 
-```
-pip install -r dev-requirements.txt
-```
+    pytest --ckan-ini=test.ini --cov=ckanext.c3charts --disable-warnings ckanext/c3charts/tests
 
-After that just type this command to actually run the tests in the extension.
+## License
 
-```
-nosetests --ckan --with-pylons=test.ini
-```
-To run the tests and produce a coverage report, first make sure you have coverage installed in your virtualenv (pip install coverage) then run:
+[AGPL](https://www.gnu.org/licenses/agpl-3.0.en.html)
 
-```
-nosetests --nologcapture --with-pylons=test.ini --with-coverage --cover-package=ckanext.c3charts --cover-inclusive --cover-erase --cover-tests
-```
+  [CI]: https://github.com/keitaroinc/ckanext-c3charts/workflows/CI/badge.svg?branch=ckan-2.9
+  [1]: https://github.com/keitaroinc/ckanext-c3charts/actions
+  [Coverage]: https://coveralls.io/repos/github/keitaroinc/ckanext-c3charts/badge.svg?branch=ckan-2.9
+  [2]: https://coveralls.io/github/keitaroinc/ckanext-c3charts?branch=ckan-2.9
+  [Gitter]: https://badges.gitter.im/keitaroinc/ckan.svg
+  [3]: https://gitter.im/keitaroinc/ckan?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge
+  [Python]: https://img.shields.io/badge/python-3.8-blue
+  [4]: https://www.python.org
+  [CKAN]: https://img.shields.io/badge/ckan-2.9-red
+  [5]: https://www.ckan.org
