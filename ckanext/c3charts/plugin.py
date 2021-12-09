@@ -6,6 +6,7 @@ from ckan.lib.plugins import DefaultTranslation
 
 import ckanext.c3charts.helpers as helpers
 import ckanext.c3charts.logic as logic
+import ckanext.c3charts.cli as cli
 
 logger = logging.getLogger(__name__)
 not_empty = plugins.toolkit.get_validator('not_empty')
@@ -19,6 +20,12 @@ class ChartsPlugin(plugins.SingletonPlugin, DefaultTranslation):
     plugins.implements(plugins.ITranslation)
     plugins.implements(plugins.ITemplateHelpers)
     plugins.implements(plugins.IActions)
+    plugins.implements(plugins.IClick)
+
+    # IClick
+
+    def get_commands(self):
+        return cli.get_commands()
 
     # IConfigurer
 
