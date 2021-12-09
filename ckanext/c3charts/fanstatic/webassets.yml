@@ -1,0 +1,32 @@
+main-style:
+  output: c3charts/%(version)s_main_style.css
+  contents:
+    - vendor/c3.css
+    - charts.css
+
+form-style:
+  output: c3charts/%(version)s_c3controls.css
+  contents:
+    - c3controls.css
+
+c3charts-main:
+  output: c3charts/%(version)s_c3charts_main.js
+  extra:
+    preload:
+      - c3charts/main-style
+      - base/main
+  contents:
+    - vendor/d3.js
+    - vendor/c3.js
+    - vendor/backend.ckan.js
+    - charts.js
+    - charts_view.js
+
+c3charts-form:
+  output: c3charts/%(version)s_c3charts_form.js
+  extra:
+    preload:
+      - c3charts/form-style
+      - base/main
+  contents:
+    - charts_form.js

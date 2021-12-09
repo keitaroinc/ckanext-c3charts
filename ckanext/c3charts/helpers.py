@@ -4,6 +4,7 @@ import ckan.lib.helpers as h
 import ckan.model as model
 from uuid import uuid4
 
+
 def c3charts_featured_charts(limit=3):
     resource_view_show = get_action('resource_view_show')
     resource_show = get_action('resource_show')
@@ -35,11 +36,13 @@ def c3charts_uuid(id):
         return str(uuid4())
     return "%s_%s" % (id, str(uuid4()))
 
+
 def _call_ignore_error(func, *args):
     try:
         return func(*args)
     except:
         return None
+
 
 def c3charts_render_featured_chart(featured_chart, embed=True):
     return h.rendered_resource_view(featured_chart['resource_view'], featured_chart['resource'], featured_chart['dataset'], embed=embed )
