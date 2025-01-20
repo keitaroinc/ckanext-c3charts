@@ -2,12 +2,16 @@ import logging
 
 from sqlalchemy import types, Column, Table, exists
 from sqlalchemy.sql.expression import false
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy import inspect
 
 from ckan.model.meta import metadata, mapper, Session
 from ckan.model.types import make_uuid
 from ckan.model.domain_object import DomainObject
 from ckan.model import Package
 import ckan.lib.dictization as d
+from ckan.plugins.toolkit import config
 
 log = logging.getLogger(__name__)
 
@@ -72,14 +76,19 @@ def setup():
     if featured_charts_table is None:
         define_featured_charts_table()
         log.debug('Featured charts table defined in memory')
+        db_url = config.get('sqlalchemy.url')  
 
-        if not featured_charts_table.exists():
-            featured_charts_table.create()
-            log.debug('Featured charts created')
+        engine = create_engine(db_url)
+
+        featured_charts_table.metadata.bind = engine
+        inspector = inspect(engine)
+        if not inspector.has_table('ckanext_c3charts_featured_charts'):
+            featured_charts_table.metadata.create_all(bind=engine)
+            log.debug('Featured charts table created')
         else:
-            log.debug('Featured charts table already created')
+            log.debug('Featured charts table already exists')
     else:
-        log.debug('Featured charts table already exist')
+        log.debug('Featured charts table already exists')
 
 
 def define_featured_charts_table():
@@ -94,3 +103,14 @@ def define_featured_charts_table():
         FeaturedCharts,
         featured_charts_table
     )
+
+    db_url = config.get('sqlalchemy.url')
+    engine = create_engine(db_url)
+    featured_charts_table.metadata.bind = engine
+
+    inspector = inspect(engine)
+    if not inspector.has_table('ckanext_c3charts_featured_charts'):
+        featured_charts_table.metadata.create_all(bind=engine)
+        log.debug('Featured charts table created')
+    else:
+        log.debug('Featured charts table already exists')
