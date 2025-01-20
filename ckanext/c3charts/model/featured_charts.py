@@ -26,7 +26,7 @@ class FeaturedCharts(DomainObject):
 
     @classmethod
     def get_featured_charts(cls, limit=3):
-        results = Session.query(cls). \
+        results = results = Session.query(cls.id, cls.resource_view_id, cls.resource_id, cls.package_id). \
             join(Package, cls.package_id == Package.id). \
             order_by(Package.metadata_modified.desc()). \
             filter(Package.private == false()). \

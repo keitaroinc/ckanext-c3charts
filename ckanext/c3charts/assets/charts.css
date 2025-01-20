@@ -94,3 +94,7 @@
 .featured-charts .btn-group-export {
   display: none;
 }
+
+.box-item-custom{
+  width: 500px;
+}
