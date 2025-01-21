@@ -158,7 +158,10 @@ def override_resource_view_create(orig_resource_view_create):
                 package_id = result['package_id']
                 resource_id = result['resource_id']
                 view_id = result["id"]
-                logic.save_featured_chart(package_id, resource_id, view_id)
+                if not view_id:
+                    logger.error("Resource view creation failed: Missing 'id'")
+                else:
+                    logic.save_featured_chart(package_id, resource_id, view_id)
         return result
 
     return _resource_view_create
