@@ -8,14 +8,7 @@
 {% block featured_charts_wrapper %}
 <div class="featured-charts-wrap">
   <div class="featured-charts container">
-    {% block featured_charts %}
-    {% set featured_charts = h.c3charts_featured_charts(4) %}
-    {% if featured_charts %}
-      {% for featured_chart in featured_charts %}
-        {% snippet 'home/snippets/featured_chart_view.html', featured_chart=featured_chart %}
-      {%- endfor -%}
-    {% endif %}
-    {% endblock %}
+  
   </div>
 </div>
 {% endblock %}
