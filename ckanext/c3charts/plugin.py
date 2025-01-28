@@ -49,7 +49,7 @@ class ChartsPlugin(plugins.SingletonPlugin):
         }
 
         return {'name': toolkit._('Chart builder'),
-                'icon': 'bar-chart-o',
+                'icon': 'fa fa-bar-chart',
                 'filterable': True,
                 'iframed': False,
                 'schema': schema}
