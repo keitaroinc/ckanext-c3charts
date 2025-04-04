@@ -26,7 +26,6 @@ class ChartsPlugin(plugins.SingletonPlugin):
         toolkit.add_public_directory(config, 'public')
         toolkit.add_resource('assets', 'c3charts')
 
-        setup_featured_charts_model()
 
     def info(self):
         schema = {

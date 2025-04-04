@@ -3,9 +3,7 @@ import logging
 from sqlalchemy import types, Column, Table, exists
 from sqlalchemy.sql.expression import false
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
 from sqlalchemy import inspect
-import sqlalchemy as sa
 from ckan import model
 
 from ckan.model.meta import metadata, mapper, Session
@@ -28,6 +26,7 @@ class FeaturedCharts(model.DomainObject):
 
     @classmethod
     def get_featured_charts(cls, limit=3):
+        setup()
         results = Session.query(cls). \
             join(Package, cls.package_id == Package.id). \
             order_by(Package.metadata_modified.desc()). \
@@ -38,6 +37,7 @@ class FeaturedCharts(model.DomainObject):
 
     @classmethod
     def save_featured_chart(cls, package_id, resource_id, view_id):
+        setup()
         already_exists = Session.query(exists().
                                        where(FeaturedCharts.package_id == package_id).
                                        where(FeaturedCharts.resource_id == resource_id).
@@ -51,6 +51,7 @@ class FeaturedCharts(model.DomainObject):
 
     @classmethod
     def delete_from_featured_charts(cls, resource_view_id):
+        setup()
         results = Session.query(FeaturedCharts). \
             filter(FeaturedCharts.resource_view_id == resource_view_id).all()
         for result in results:
@@ -59,6 +60,7 @@ class FeaturedCharts(model.DomainObject):
 
     @classmethod
     def delete_from_featured_charts_by_resource(cls, resource_id):
+        setup()
         results = Session.query(FeaturedCharts). \
             filter(FeaturedCharts.resource_id == resource_id).all()
         for result in results:
@@ -67,6 +69,7 @@ class FeaturedCharts(model.DomainObject):
 
     @classmethod
     def delete_from_featured_charts_by_package(cls, package_id):
+        setup()
         results = Session.query(FeaturedCharts). \
             filter(FeaturedCharts.package_id == package_id).all()
         for result in results:
