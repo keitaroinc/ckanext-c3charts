@@ -3,7 +3,6 @@ import ckan.plugins.toolkit as toolkit
 from ckan.logic import get_action
 import logging
 
-from ckanext.c3charts.model.featured_charts import setup as setup_featured_charts_model
 import ckanext.c3charts.helpers as helpers
 import ckanext.c3charts.logic as logic
 
@@ -26,7 +25,6 @@ class ChartsPlugin(plugins.SingletonPlugin):
         toolkit.add_public_directory(config, 'public')
         toolkit.add_resource('assets', 'c3charts')
 
-        setup_featured_charts_model()
 
     def info(self):
         schema = {
