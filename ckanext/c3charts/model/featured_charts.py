@@ -5,6 +5,8 @@ from sqlalchemy.sql.expression import false
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import inspect
+import sqlalchemy as sa
+from ckan import model
 
 from ckan.model.meta import metadata, mapper, Session
 from ckan.model.types import make_uuid
@@ -22,7 +24,7 @@ __all__ = [
 featured_charts_table = None
 
 
-class FeaturedCharts(DomainObject):
+class FeaturedCharts(model.DomainObject):
 
     @classmethod
     def get_featured_charts(cls, limit=3):
@@ -106,11 +108,9 @@ def define_featured_charts_table():
 
     db_url = config.get('sqlalchemy.url')
     engine = create_engine(db_url)
-    featured_charts_table.metadata.bind = engine
-
     inspector = inspect(engine)
     if not inspector.has_table('ckanext_c3charts_featured_charts'):
-        featured_charts_table.metadata.create_all(bind=engine)
+        metadata.create_all(bind=engine)
         log.debug('Featured charts table created')
     else:
         log.debug('Featured charts table already exists')
