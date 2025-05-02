@@ -1,24 +1,23 @@
 import logging
 
-from sqlalchemy import types, Column, Table, exists
+from sqlalchemy import types, Column, exists
 from sqlalchemy.sql.expression import false
 
-from ckan.model.meta import metadata, mapper, Session
+from ckan.model.meta import Session
 from ckan.model.types import make_uuid
-from ckan.model.domain_object import DomainObject
 from ckan.model import Package
+from ckan.plugins import toolkit
 import ckan.lib.dictization as d
 
 log = logging.getLogger(__name__)
 
-__all__ = [
-    'FeaturedCharts', 'featured_charts_table',
-]
+class FeaturedCharts(toolkit.BaseModel):
+    __tablename__ = 'ckanext_c3charts_featured_charts'
 
-featured_charts_table = None
-
-
-class FeaturedCharts(DomainObject):
+    id = Column('id', types.UnicodeText, primary_key=True, default=make_uuid)
+    resource_view_id =  Column('resource_view_id', types.UnicodeText)
+    resource_id = Column('resource_id', types.UnicodeText)
+    package_id = Column('package_id', types.UnicodeText)
 
     @classmethod
     def get_featured_charts(cls, limit=3):
@@ -67,30 +66,3 @@ class FeaturedCharts(DomainObject):
             Session.delete(result)
         Session.commit()
 
-
-def setup():
-    if featured_charts_table is None:
-        define_featured_charts_table()
-        log.debug('Featured charts table defined in memory')
-
-        if not featured_charts_table.exists():
-            featured_charts_table.create()
-            log.debug('Featured charts created')
-        else:
-            log.debug('Featured charts table already created')
-    else:
-        log.debug('Featured charts table already exist')
-
-
-def define_featured_charts_table():
-    global featured_charts_table
-    featured_charts_table = Table('ckanext_c3charts_featured_charts', metadata,
-                                  Column('id', types.UnicodeText, primary_key=True, default=make_uuid),
-                                  Column('resource_view_id', types.UnicodeText),
-                                  Column('resource_id', types.UnicodeText),
-                                  Column('package_id', types.UnicodeText))
-
-    mapper(
-        FeaturedCharts,
-        featured_charts_table
-    )
