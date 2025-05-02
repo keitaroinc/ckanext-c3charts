@@ -156,7 +156,10 @@ this.recline.Backend.Ckan = this.recline.Backend.Ckan || {};
       var jqxhr = jQuery.ajax({
         url: searchUrl,
         type: 'POST',
-        data: encodeURIComponent(JSON.stringify(data))
+        data: encodeURIComponent(JSON.stringify(data)),
+        headers: {
+          'X-CSRF-Token': $('meta[name="_csrf_token"]').attr('content')
+        },
       });
       return jqxhr;
     };
@@ -168,7 +171,10 @@ this.recline.Backend.Ckan = this.recline.Backend.Ckan || {};
         type: 'GET',
         data: encodeURIComponent({
           sql: sql
-        })
+        }),
+        headers: {
+          'X-CSRF-Token': $('meta[name="_csrf_token"]').attr('content')
+        },
       });
       return jqxhr;
     }
