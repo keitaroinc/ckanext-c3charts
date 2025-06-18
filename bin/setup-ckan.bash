@@ -4,7 +4,7 @@ set -e
 echo "This is setup-ckan.bash..."
 
 echo "Installing the packages that CKAN requires..."
-sudo apt-get update
+sudo apt-get update -qq
 
 echo "Installing CKAN and its Python dependencies..."
 git clone https://github.com/ckan/ckan
@@ -31,9 +31,9 @@ then
     pip install setuptools==39.0.1
 fi
 
-python setup.py develop
 pip install -r requirements.txt
 pip install -r dev-requirements.txt
+pip install -e .
 cd -
 
 echo "Creating the PostgreSQL users and databases..."
