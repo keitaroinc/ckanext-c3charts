@@ -15,12 +15,12 @@ jobs:
   code_quality:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Setup Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
-          python-version: '3.9.23'
+          python-version: '3.9'
 
       - name: Install flake8
         run: |
@@ -35,7 +35,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [ '3.8' ]
+        python-version: [ '3.9' ]
     name: Python ${{ matrix.python-version }} extension test
 
     services:
@@ -69,10 +69,10 @@ jobs:
           - 8983:8983
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Setup Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
           architecture: x64
