@@ -62,14 +62,16 @@ def get_ckan_version():
 
 
 def get_featured_charts_model():
-    """Dynamically imports the FeaturedCharts model based on CKAN version."""
+    """Dynamically imports and initializes the FeaturedCharts model based on CKAN version."""
     version = get_ckan_version()
     try:
         if version.startswith('2.11'):
-            from ckanext.c3charts.model.featured_charts_2_11 import FeaturedCharts
+            from ckanext.c3charts.model import featured_charts_2_11 as featured_chart_model
         else:
-            from ckanext.c3charts.model.featured_charts import FeaturedCharts
-        return FeaturedCharts
+            from ckanext.c3charts.model import featured_charts as featured_chart_model
+
+        featured_chart_model.setup()
+        return featured_chart_model.FeaturedCharts
     except ImportError as e:
         logger.exception(f"Could not import FeaturedCharts model for CKAN version {version}")
-        raise e
+        raise
