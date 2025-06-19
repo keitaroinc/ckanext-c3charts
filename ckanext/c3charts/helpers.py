@@ -3,6 +3,7 @@ from ckan.logic import get_action
 import ckan.lib.helpers as h
 import ckan.model as model
 from uuid import uuid4
+from ckan.plugins import toolkit
 
 
 def c3charts_featured_charts(limit=3):
@@ -51,3 +52,8 @@ def c3charts_render_featured_chart(featured_chart, embed=True):
                                     featured_chart['resource'],
                                     featured_chart['dataset'],
                                     embed=embed)
+
+
+def get_ckan_version():
+    data = toolkit.get_action('status_show')({})
+    return data['ckan_version']

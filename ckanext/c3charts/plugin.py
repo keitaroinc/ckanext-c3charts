@@ -3,7 +3,6 @@ import ckan.plugins.toolkit as toolkit
 from ckan.logic import get_action
 import logging
 
-from ckanext.c3charts.model.featured_charts import setup as setup_featured_charts_model
 import ckanext.c3charts.helpers as helpers
 import ckanext.c3charts.logic as logic
 
@@ -26,9 +25,18 @@ class ChartsPlugin(plugins.SingletonPlugin):
         toolkit.add_public_directory(config, 'public')
         toolkit.add_resource('assets', 'c3charts')
 
-        setup_featured_charts_model()
+        ckan_version = helpers.get_ckan_version()
 
+        if ckan_version.startswith('2.11'):
+            from ckanext.c3charts.model.featured_charts_2_11 import setup as setup_featured_charts_model
+        else:
+            from ckanext.c3charts.model.featured_charts import setup as setup_featured_charts_model
+
+        setup_featured_charts_model()
+ 
     def info(self):
+        ckan_version = helpers.get_ckan_version()
+
         schema = {
             'chart_type': [not_empty],
             'key_fields': [not_empty],
@@ -48,11 +56,16 @@ class ChartsPlugin(plugins.SingletonPlugin):
             'aggregate': [ignore_missing]
         }
 
-        return {'name': toolkit._('Chart builder'),
-                'icon': 'fa fa-bar-chart',
-                'filterable': True,
-                'iframed': False,
-                'schema': schema}
+        icon = 'fa fa-bar-chart' if ckan_version.startswith('2.11') else 'bar-chart-o'
+
+        return {
+            'name': toolkit._('Chart builder'),
+            'icon': icon,
+            'filterable': True,
+            'iframed': False,
+            'schema': schema
+        }
+
 
     def can_view(self, data_dict):
         return data_dict['resource'].get('datastore_active', False)
@@ -115,7 +128,8 @@ class ChartsPlugin(plugins.SingletonPlugin):
         return {
             'c3charts_featured_charts': helpers.c3charts_featured_charts,
             'c3charts_render_featured_chart': helpers.c3charts_render_featured_chart,
-            'c3charts_uuid': helpers.c3charts_uuid
+            'c3charts_uuid': helpers.c3charts_uuid,
+             'ckan_version': helpers.get_ckan_version,
         }
 
     # ITActions
