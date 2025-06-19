@@ -1,12 +1,14 @@
-from ckanext.c3charts.model.featured_charts import FeaturedCharts
 from ckan.logic import get_action
 import ckan.lib.helpers as h
 import ckan.model as model
 from uuid import uuid4
 from ckan.plugins import toolkit
-
+import logging
+logger = logging.getLogger(__name__)
 
 def c3charts_featured_charts(limit=3):
+    FeaturedCharts = get_featured_charts_model()
+
     resource_view_show = get_action('resource_view_show')
     resource_show = get_action('resource_show')
     package_show = get_action('package_show')
@@ -57,3 +59,17 @@ def c3charts_render_featured_chart(featured_chart, embed=True):
 def get_ckan_version():
     data = toolkit.get_action('status_show')({})
     return data['ckan_version']
+
+
+def get_featured_charts_model():
+    """Dynamically imports the FeaturedCharts model based on CKAN version."""
+    version = get_ckan_version()
+    try:
+        if version.startswith('2.11'):
+            from ckanext.c3charts.model.featured_charts_2_11 import FeaturedCharts
+        else:
+            from ckanext.c3charts.model.featured_charts import FeaturedCharts
+        return FeaturedCharts
+    except ImportError as e:
+        logger.exception(f"Could not import FeaturedCharts model for CKAN version {version}")
+        raise e
