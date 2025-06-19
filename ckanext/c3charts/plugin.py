@@ -56,7 +56,8 @@ class ChartsPlugin(plugins.SingletonPlugin):
             'aggregate': [ignore_missing]
         }
 
-        icon = 'fa fa-bar-chart' if ckan_version.startswith('2.11') else 'bar-chart-o'
+        icon = 'fa fa-bar-chart' if ckan_version.startswith(('2.10', '2.11')) else 'bar-chart-o'
+
 
         return {
             'name': toolkit._('Chart builder'),
