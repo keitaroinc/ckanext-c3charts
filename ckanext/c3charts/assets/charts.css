@@ -45,13 +45,13 @@
   margin-bottom: 30px
 }
 
-.featured-charts-wrap{
+.featured-charts-wrap {
   padding-top: 15px;
   padding-bottom: 15px;
   background-color: #eee;
 }
 
-.featured-charts{
+.featured-charts {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -87,10 +87,14 @@
   height: 100%;
 }
 
-.featured-charts .c3{
+.featured-charts .c3 {
   height: 200px !important;
 }
 
 .featured-charts .btn-group-export {
   display: none;
+}
+
+.box-item-custom {
+  width: 500px;
 }
