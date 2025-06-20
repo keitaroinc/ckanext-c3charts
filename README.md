@@ -64,5 +64,5 @@ To run the tests, do:
   [3]: https://gitter.im/keitaroinc/ckan?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge
   [Python]: https://img.shields.io/badge/python-3.8%20|3.9%20|%203.10%20|%203.11-blue
   [4]: https://www.python.org
-  [CKAN]: https://img.shields.io/badge/ckan-2.10%20|%202.11-yellow
+  [CKAN]: https://img.shields.io/badge/ckan-2.9%20|%202.10%20|%202.11-yellow
   [5]: https://www.ckan.org
