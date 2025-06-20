@@ -6,6 +6,7 @@ from ckan.plugins import toolkit
 import logging
 logger = logging.getLogger(__name__)
 
+
 def c3charts_featured_charts(limit=3):
     FeaturedCharts = get_featured_charts_model()
 
@@ -20,18 +21,16 @@ def c3charts_featured_charts(limit=3):
         dataset = None
         view = None
 
-        view = _call_ignore_error(resource_view_show, context, {'id': chart['resource_view_id']})
-        resource = _call_ignore_error(resource_show, context, {'id': chart['resource_id']})
-        dataset = _call_ignore_error(package_show, context, {'id': chart['package_id']})
+        view = _call_ignore_error(resource_view_show, context, {'id': chart['resource_view_id']}) # noqa
+        resource = _call_ignore_error(resource_show, context, {'id': chart['resource_id']}) # noqa
+        dataset = _call_ignore_error(package_show, context, {'id': chart['package_id']}) # noqa
         if view is None or resource is None or dataset is None:
             continue
         chart['title'] = view.get('title')
         chart['resource_view'] = view
         chart['resource'] = resource
         chart['dataset'] = dataset
-        chart['resource_view_url'] = h.url_for(str('/dataset/%s/resource/%s' % (chart['package_id'],
-                                                                                chart['resource_id'])),
-                                               view_id=chart['resource_view_id'])
+        chart['resource_view_url'] = h.url_for(str('/dataset/%s/resource/%s' % (chart['package_id'], chart['resource_id'])), view_id=chart['resource_view_id']) # noqa
         result_charts.append(chart)
     return result_charts
 
@@ -62,16 +61,17 @@ def get_ckan_version():
 
 
 def get_featured_charts_model():
-    """Dynamically imports and initializes the FeaturedCharts model based on CKAN version."""
+    """Dynamically imports and initializes the
+    FeaturedCharts model based on CKAN version."""
     version = get_ckan_version()
     try:
         if version.startswith('2.11'):
-            from ckanext.c3charts.model import featured_charts_2_11 as featured_chart_model
+            from ckanext.c3charts.model import featured_charts_2_11 as fc_model
         else:
-            from ckanext.c3charts.model import featured_charts as featured_chart_model
+            from ckanext.c3charts.model import featured_charts as fc_model
 
-        featured_chart_model.setup()
-        return featured_chart_model.FeaturedCharts
-    except ImportError as e:
-        logger.exception(f"Could not import FeaturedCharts model for CKAN version {version}")
+        fc_model.setup()
+        return fc_model.FeaturedCharts
+    except ImportError as e: # noqa
+        logger.exception(f"Could not import FeaturedCharts model for CKAN version {version}") # noqa
         raise
