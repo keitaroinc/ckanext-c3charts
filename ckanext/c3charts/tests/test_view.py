@@ -1,10 +1,15 @@
 # encoding: utf-8
 import pytest
-
 import ckan.plugins as p
-
 from ckan.tests import factories
+import ckan
 
+if not hasattr(ckan, '__version__'):
+    try: 
+        import pkg_resources
+        ckan.__version__=pkg_resources.get_distribution("ckan").version
+    except Exception:
+        ckan.__version__ = '2.9.0'
 
 @pytest.mark.usefixtures(u'clean_db', u'clean_index')
 @pytest.mark.ckan_config('ckan.views.default_views', '')
