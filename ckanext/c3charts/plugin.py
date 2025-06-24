@@ -3,7 +3,6 @@ import ckan.plugins.toolkit as toolkit
 from ckan.logic import get_action
 import logging
 
-from ckanext.c3charts.model.featured_charts import setup as setup_featured_charts_model
 import ckanext.c3charts.helpers as helpers
 import ckanext.c3charts.logic as logic
 
@@ -26,9 +25,18 @@ class ChartsPlugin(plugins.SingletonPlugin):
         toolkit.add_public_directory(config, 'public')
         toolkit.add_resource('assets', 'c3charts')
 
+        ckan_version = helpers.get_ckan_version()
+
+        if ckan_version.startswith('2.11'):
+            from ckanext.c3charts.model.featured_charts_2_11 import setup as setup_featured_charts_model # noqa
+        else:
+            from ckanext.c3charts.model.featured_charts import setup as setup_featured_charts_model # noqa
+
         setup_featured_charts_model()
 
     def info(self):
+        ckan_version = helpers.get_ckan_version()
+
         schema = {
             'chart_type': [not_empty],
             'key_fields': [not_empty],
@@ -48,11 +56,15 @@ class ChartsPlugin(plugins.SingletonPlugin):
             'aggregate': [ignore_missing]
         }
 
-        return {'name': toolkit._('Chart builder'),
-                'icon': 'fa fa-bar-chart',
-                'filterable': True,
-                'iframed': False,
-                'schema': schema}
+        icon = 'fa fa-bar-chart' if ckan_version.startswith(('2.10', '2.11')) else 'bar-chart-o' # noqa 
+
+        return {
+            'name': toolkit._('Chart builder'),
+            'icon': icon,
+            'filterable': True,
+            'iframed': False,
+            'schema': schema
+        }
 
     def can_view(self, data_dict):
         return data_dict['resource'].get('datastore_active', False)
@@ -78,30 +90,30 @@ class ChartsPlugin(plugins.SingletonPlugin):
                                 {'value': 'Spline Chart'},
                                 {'value': 'Table Chart'},
                                 {'value': 'Simple Chart'}],
-                'color_schemes': [{'value': '#B80000, #995522, #556677, #118888, #115588, '
-                                            '#4C3D3D, #2B2B2B, #660000, #221100',
+                'color_schemes': [{'value': '#B80000, #995522, #556677, #118888, #115588, ' # noqa
+                                            '#4C3D3D, #2B2B2B, #660000, #221100', # noqa
                                    'text': toolkit._('Saturated')},
-                                  {'value': '#DDBBAA, #79E6F2, #88AA99, #00A864, #228899, '
-                                            '#3F797F, #775555, #118855, #008751, #3D4C46',
+                                  {'value': '#DDBBAA, #79E6F2, #88AA99, #00A864, #228899, ' # noqa
+                                            '#3F797F, #775555, #118855, #008751, #3D4C46',  # noqa 
                                    'text': toolkit._('Light')},
-                                  {'value': '#ADC0D8, #79AFF2, #8899AA, #0EAAB2, #00A0A8, '
-                                            '#776655, #118888, #885511, #3F5C7F, #225599',
+                                  {'value': '#ADC0D8, #79AFF2, #8899AA, #0EAAB2, #00A0A8, ' # noqa
+                                            '#776655, #118888, #885511, #3F5C7F, #225599', # noqa
                                    'text': toolkit._('Pastel')},
-                                  {'value': '#ADB1D8, #8899AA, #7983F2, #777752, #887711, '
-                                            '#0070C0, #0062A8, #3F457F, #115588, #3D464C',
+                                  {'value': '#ADB1D8, #8899AA, #7983F2, #777752, #887711, ' # noqa
+                                            '#0070C0, #0062A8, #3F457F, #115588, #3D464C', # noqa
                                    'text': toolkit._('Pastel 2')},
-                                  {'value': '#AA9988, #A88600, #779922, #6C7F3F, #887711, '
-                                            '#555577, #665500, #665100, #4C493D, #2B2B2V',
+                                  {'value': '#AA9988, #A88600, #779922, #6C7F3F, #887711, ' # noqa
+                                            '#555577, #665500, #665100, #4C493D, #2B2B2V', # noqa
                                    'text': toolkit._('Contrast')}],
                 'text_chart_number_actions': [{'value': 'substract',
-                                               'text': toolkit._('Substract last two entries')},
+                                               'text': toolkit._('Substract last two entries')}, # noqa
                                               {'value': 'average',
                                                'text': toolkit._('Average')},
                                               {'value': 'last',
-                                               'text': toolkit._('Show last')}],
-                'legend_options': [{'text': toolkit._('Hide'), 'value': 'hide'},
-                                   {'text': toolkit._('Right'), 'value': 'right'},
-                                   {'text': toolkit._('Bottom'), 'value': 'bottom'}]
+                                               'text': toolkit._('Show last')}],  # noqa 
+                'legend_options': [{'text': toolkit._('Hide'), 'value': 'hide'}, # noqa
+                                   {'text': toolkit._('Right'), 'value': 'right'}, # noqa
+                                   {'text': toolkit._('Bottom'), 'value': 'bottom'}] # noqa
                 }
 
     def view_template(self, context, data_dict):
@@ -114,8 +126,9 @@ class ChartsPlugin(plugins.SingletonPlugin):
     def get_helpers(self):
         return {
             'c3charts_featured_charts': helpers.c3charts_featured_charts,
-            'c3charts_render_featured_chart': helpers.c3charts_render_featured_chart,
-            'c3charts_uuid': helpers.c3charts_uuid
+            'c3charts_render_featured_chart': helpers.c3charts_render_featured_chart, # noqa
+            'c3charts_uuid': helpers.c3charts_uuid,
+            'ckan_version': helpers.get_ckan_version,
         }
 
     # ITActions
@@ -126,9 +139,9 @@ class ChartsPlugin(plugins.SingletonPlugin):
         orig_resource_delete = get_action('resource_delete')
         orig_package_delete = get_action('package_delete')
         return {
-            'resource_view_create': override_resource_view_create(orig_resource_view_create),
-            'resource_view_delete': override_resource_view_delete(orig_resource_view_delete),
-            'resource_view_update': override_resource_view_update(orig_resource_view_update),
+            'resource_view_create': override_resource_view_create(orig_resource_view_create), # noqa
+            'resource_view_delete': override_resource_view_delete(orig_resource_view_delete), # noqa
+            'resource_view_update': override_resource_view_update(orig_resource_view_update), # noqa
             'resource_delete': override_resource_delete(orig_resource_delete),
             'package_delete': override_package_delete(orig_package_delete)
 
