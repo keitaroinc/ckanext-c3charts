@@ -1,13 +1,11 @@
-import sys
-import importlib
+import pytest
+import ckan
 
-def safe_register_plugin(name):
-    module = sys.modules.get(name)
-    if not module:
-        module = importlib.import_module(name)
-    return module
+@pytest.fixture(autouse=True)
+def mock_ckan_version():
+    ckan.__version__ = '2.10'
 
 pytest_plugins = [
-    safe_register_plugin('ckan.tests.pytest_ckan.ckan_setup'),
-    safe_register_plugin('ckan.tests.pytest_ckan.fixtures'),
+    u'ckan.tests.pytest_ckan.ckan_setup',
+    u'ckan.tests.pytest_ckan.fixtures',
 ]
