@@ -1,6 +1,7 @@
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 from ckan.logic import get_action
+from ckan.lib.helpers import ckan_version
 import logging
 
 import ckanext.c3charts.helpers as helpers
@@ -25,9 +26,7 @@ class ChartsPlugin(plugins.SingletonPlugin):
         toolkit.add_public_directory(config, 'public')
         toolkit.add_resource('assets', 'c3charts')
 
-        ckan_version = helpers.get_ckan_version()
-
-        if ckan_version.startswith('2.11'):
+        if ckan_version == '2.11':
             from ckanext.c3charts.model.featured_charts_2_11 import setup as setup_featured_charts_model # noqa
         else:
             from ckanext.c3charts.model.featured_charts import setup as setup_featured_charts_model # noqa
@@ -35,7 +34,6 @@ class ChartsPlugin(plugins.SingletonPlugin):
         setup_featured_charts_model()
 
     def info(self):
-        ckan_version = helpers.get_ckan_version()
 
         schema = {
             'chart_type': [not_empty],
@@ -56,7 +54,7 @@ class ChartsPlugin(plugins.SingletonPlugin):
             'aggregate': [ignore_missing]
         }
 
-        icon = 'fa fa-bar-chart' if ckan_version.startswith(('2.10', '2.11')) else 'bar-chart-o' # noqa 
+        icon = 'fa fa-bar-chart' if ckan_version =='2.10' or ckan_version == '2.11' else 'bar-chart-o' # noqa 
 
         return {
             'name': toolkit._('Chart builder'),
@@ -128,7 +126,6 @@ class ChartsPlugin(plugins.SingletonPlugin):
             'c3charts_featured_charts': helpers.c3charts_featured_charts,
             'c3charts_render_featured_chart': helpers.c3charts_render_featured_chart, # noqa
             'c3charts_uuid': helpers.c3charts_uuid,
-            'ckan_version': helpers.get_ckan_version,
         }
 
     # ITActions

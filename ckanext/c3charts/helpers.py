@@ -2,7 +2,7 @@ from ckan.logic import get_action
 import ckan.lib.helpers as h
 import ckan.model as model
 from uuid import uuid4
-from ckan.plugins import toolkit
+from ckan.lib.helpers import ckan_version
 import logging
 logger = logging.getLogger(__name__)
 
@@ -55,17 +55,14 @@ def c3charts_render_featured_chart(featured_chart, embed=True):
                                     embed=embed)
 
 
-def get_ckan_version():
-    data = toolkit.get_action('status_show')({})
-    return data['ckan_version']
-
-
 def get_featured_charts_model():
     """Dynamically imports and initializes the
     FeaturedCharts model based on CKAN version."""
-    version = get_ckan_version()
+    version = ckan_version()
+    if version is None or version == 'unknown':
+        raise ValueError("Unable to determine CKAN version.")
     try:
-        if version.startswith('2.11'):
+        if version == '2.11':
             from ckanext.c3charts.model import featured_charts_2_11 as fc_model
         else:
             from ckanext.c3charts.model import featured_charts as fc_model
