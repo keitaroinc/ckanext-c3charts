@@ -8,10 +8,6 @@ from ckan.model.types import make_uuid
 from ckan.model.domain_object import DomainObject
 from ckan.model import Package
 import ckan.lib.dictization as d
-from ckan.plugins.toolkit import config
-from sqlalchemy import create_engine
-from sqlalchemy import inspect
-
 
 log = logging.getLogger(__name__)
 
@@ -77,17 +73,14 @@ def setup():
     if featured_charts_table is None:
         define_featured_charts_table()
         log.debug('Featured charts table defined in memory')
-        db_url = config.get('sqlalchemy.url')
-        engine = create_engine(db_url)
-        featured_charts_table.metadata.bind = engine
-        inspector = inspect(engine)
-        if not inspector.has_table('ckanext_c3charts_featured_charts'):
-            featured_charts_table.metadata.create_all(bind=engine)
-            log.debug('Featured charts table created')
+
+        if not featured_charts_table.exists():
+            featured_charts_table.create()
+            log.debug('Featured charts created')
         else:
-            log.debug('Featured charts table already exists')
+            log.debug('Featured charts table already created')
     else:
-        log.debug('Featured charts table already exists')
+        log.debug('Featured charts table already exist')
 
 
 def define_featured_charts_table():
