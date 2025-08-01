@@ -62,7 +62,7 @@ def get_featured_charts_model():
     if version is None or version == 'unknown':
         raise ValueError("Unable to determine CKAN version.")
     try:
-        if version == '2.11':
+        if version.startswith('2.11'):
             from ckanext.c3charts.model import featured_charts_2_11 as fc_model
         else:
             from ckanext.c3charts.model import featured_charts as fc_model
