@@ -35,7 +35,7 @@ jobs:
         ckan-version: ["2.10", "2.11"]
       fail-fast: false
 
-    name: CKAN ${{ matrix.ckan-version }} Python ${{ matrix.python-version }}
+    name: CKAN ${{ matrix.ckan-version }} Python ${{matrix.python-version}}
     runs-on: ubuntu-latest
     container:
       image: ckan/ckan-dev:${{ matrix.ckan-version }}
@@ -51,47 +51,39 @@ jobs:
           POSTGRES_DB: postgres
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
       redis:
-        image: redis:3
+          image: redis:3
     env:
       CKAN_SQLALCHEMY_URL: postgresql://ckan_default:pass@postgres/ckan_test
       CKAN_DATASTORE_WRITE_URL: postgresql://datastore_write:pass@postgres/datastore_test
       CKAN_DATASTORE_READ_URL: postgresql://datastore_read:pass@postgres/datastore_test
       CKAN_SOLR_URL: http://solr:8983/solr/ckan
       CKAN_REDIS_URL: redis://redis:6379/1
-      COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
 
     steps:
-      - uses: actions/checkout@v4
+    - uses: actions/checkout@v4
+    - name: Install requirements
+      run: |
+        pip install -e .
+        # Replace default path to CKAN core config file with the one on the container
+        sed -i -e 's/use = config:.*/use = config:\/srv\/app\/src\/ckan\/test-core.ini/' test.ini
+    - name: Setup extension (CKAN 2.10 only)
+      if: matrix.ckan-version == '2.10'
+      run: |
+        ckan -c test.ini db init
+    - name: Run all tests
+      run: pytest --ckan-ini=test.ini --cov=ckanext.c3charts --disable-warnings ckanext/c3charts/tests
 
-      - name: Install requirements
-        run: |
-          pip install -e .
-          sed -i -e 's|use = config:.*|use = config:/srv/app/src/ckan/test-core.ini|' test.ini
+  #   - name: Coveralls
+  #     uses: AndreMiras/coveralls-python-action@develop
+  #     with:
+  #       parallel: true
+  #       flag-name: Python ${{ matrix.python-version }} Unit Test
 
-      - name: Setup extension (CKAN 2.10 only)
-        if: matrix.ckan-version == '2.10'
-        run: |
-          ckan -c test.ini db init
-
-      - name: Run tests with coverage
-        run: |
-          pytest --ckan-ini=test.ini \
-                 --cov=ckanext.c3charts \
-                 --cov-report xml:coverage.xml \
-                 --disable-warnings ckanext/c3charts/tests
-
-      - name: Upload to Coveralls
-        uses: AndreMiras/coveralls-python-action@develop
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          parallel: true
-          flag-name: CKAN-${{ matrix.ckan-version }}-Py${{ matrix.python-version }}
-
-  coveralls_finish:
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Coveralls Finished
-        uses: AndreMiras/coveralls-python-action@develop
-        with:
-          parallel-finished: true
+  # coveralls_finish:
+  #   needs: test
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - name: Coveralls Finished
+  #     uses: AndreMiras/coveralls-python-action@develop
+  #     with:
+  #       parallel-finished: true
