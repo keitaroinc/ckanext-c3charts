@@ -66,9 +66,6 @@ jobs:
         pip install -e .
         # Replace default path to CKAN core config file with the one on the container
         sed -i -e 's/use = config:.*/use = config:\/srv\/app\/src\/ckan\/test-core.ini/' test.ini
-    - name: Setup extension
-      run: |
-        ckan -c test.ini db init
     - name: Run all tests
       run: pytest --ckan-ini=test.ini --cov=ckanext.c3charts --disable-warnings ckanext/c3charts/tests
 
