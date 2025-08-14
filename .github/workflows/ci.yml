@@ -81,10 +81,9 @@ jobs:
                  --disable-warnings ckanext/c3charts/tests
 
       - name: Upload to Coveralls
-        uses: AndreMiras/coveralls-python-action@v2.2.0
+        uses: AndreMiras/coveralls-python-action@develop
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          path-to-lcov: coverage.xml
           parallel: true
           flag-name: CKAN-${{ matrix.ckan-version }}-Py${{ matrix.python-version }}
 
@@ -93,6 +92,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Coveralls Finished
-        uses: AndreMiras/coveralls-python-action@v2.2.0
+        uses: AndreMiras/coveralls-python-action@develop
         with:
           parallel-finished: true
