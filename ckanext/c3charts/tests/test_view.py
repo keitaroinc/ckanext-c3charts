@@ -13,14 +13,14 @@ def with_plugins():
     """Load required plugins for tests"""
     plugins_to_load = ['datastore', 'c3charts']
     loaded_plugins = []
-    
+
     for plugin in plugins_to_load:
         if not p.plugin_loaded(plugin):
             p.load(plugin)
             loaded_plugins.append(plugin)
-    
+
     yield
-    
+
     # Cleanup
     for plugin in loaded_plugins:
         p.unload(plugin)
