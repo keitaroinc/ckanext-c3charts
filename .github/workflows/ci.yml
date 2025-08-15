@@ -73,17 +73,17 @@ jobs:
     - name: Run all tests
       run: pytest --ckan-ini=test.ini --cov=ckanext.c3charts --disable-warnings ckanext/c3charts/tests
 
-  #   - name: Coveralls
-  #     uses: AndreMiras/coveralls-python-action@develop
-  #     with:
-  #       parallel: true
-  #       flag-name: Python ${{ matrix.python-version }} Unit Test
+    - name: Coveralls
+      uses: AndreMiras/coveralls-python-action@develop
+      with:
+        parallel: true
+        flag-name: Python ${{ matrix.python-version }} Unit Test
 
-  # coveralls_finish:
-  #   needs: test
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #   - name: Coveralls Finished
-  #     uses: AndreMiras/coveralls-python-action@develop
-  #     with:
-  #       parallel-finished: true
+  coveralls_finish:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+    - name: Coveralls Finished
+      uses: AndreMiras/coveralls-python-action@develop
+      with:
+        parallel-finished: true
