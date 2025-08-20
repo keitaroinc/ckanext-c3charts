@@ -4,6 +4,17 @@
 
 This extension provides chart library that enables deeper integration of charts into CKAN applications.
 
+## Requirements
+
+Compatibility with core CKAN versions:
+
+| CKAN version    | Compatible?   |
+| --------------- | ------------- |
+| 2.9             | Yes           |
+| 2.10            | Yes           |
+| 2.11            | Yes           |
+
+
 ## Installation
 
 To install ckanext-c3charts:
@@ -56,13 +67,13 @@ To run the tests, do:
 
 [AGPL](https://www.gnu.org/licenses/agpl-3.0.en.html)
 
-  [CI]: https://github.com/keitaroinc/ckanext-c3charts/workflows/CI/badge.svg?branch=ckan-2.9
+  [CI]: https://github.com/keitaroinc/ckanext-c3charts/workflows/CI/badge.svg
   [1]: https://github.com/keitaroinc/ckanext-c3charts/actions
   [Coverage]: https://coveralls.io/repos/github/keitaroinc/ckanext-c3charts/badge.svg?branch=ckan-2.9
   [2]: https://coveralls.io/github/keitaroinc/ckanext-c3charts?branch=ckan-2.9
   [Gitter]: https://badges.gitter.im/keitaroinc/ckan.svg
   [3]: https://gitter.im/keitaroinc/ckan?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge
-  [Python]: https://img.shields.io/badge/python-3.8-blue
+  [Python]: https://img.shields.io/badge/python-3.9%20|%203.10%20-blue
   [4]: https://www.python.org
-  [CKAN]: https://img.shields.io/badge/ckan-2.9-red
+  [CKAN]: https://img.shields.io/badge/ckan-2.9%20|%202.10%20|%202.11-yellow
   [5]: https://www.ckan.org
