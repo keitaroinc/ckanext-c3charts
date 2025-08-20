@@ -1,4 +1,4 @@
-[![CI][]][1] [![Coverage][]][2] [![Gitter][]][3] [![Python][]][4] [![CKAN][]][5]
+[![CI][]][1] [![Gitter][]][2] [![Python][]][3] [![CKAN][]][4]
 
 # Ckan Charts
 
@@ -70,10 +70,9 @@ To run the tests, do:
   [CI]: https://github.com/keitaroinc/ckanext-c3charts/workflows/CI/badge.svg
   [1]: https://github.com/keitaroinc/ckanext-c3charts/actions
   [Coverage]: https://coveralls.io/repos/github/keitaroinc/ckanext-c3charts/badge.svg?branch=ckan-2.9
-  [2]: https://coveralls.io/github/keitaroinc/ckanext-c3charts?branch=ckan-2.9
   [Gitter]: https://badges.gitter.im/keitaroinc/ckan.svg
-  [3]: https://gitter.im/keitaroinc/ckan?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge
+  [2]: https://gitter.im/keitaroinc/ckan?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge
   [Python]: https://img.shields.io/badge/python-3.9%20|%203.10%20-blue
-  [4]: https://www.python.org
+  [3]: https://www.python.org
   [CKAN]: https://img.shields.io/badge/ckan-2.9%20|%202.10%20|%202.11-yellow
-  [5]: https://www.ckan.org
+  [4]: https://www.ckan.org
