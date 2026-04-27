@@ -1,11 +1,11 @@
 import logging
 
-from sqlalchemy import types, Column, Table, exists
+from sqlalchemy import types, Column, Table, MetaData, exists
 from sqlalchemy.sql.expression import false
 from sqlalchemy import create_engine
 from sqlalchemy import inspect
 
-from ckan.model.meta import metadata, mapper, Session
+from ckan.model.meta import mapper, Session
 from ckan.model.types import make_uuid
 from ckan.model.domain_object import DomainObject
 from ckan.model import Package
@@ -19,6 +19,7 @@ __all__ = [
 ]
 
 featured_charts_table = None
+_metadata = MetaData()
 
 
 class FeaturedCharts(DomainObject):
@@ -76,13 +77,10 @@ def setup():
         define_featured_charts_table()
         log.debug('Featured charts table defined in memory')
         db_url = config.get('sqlalchemy.url')
-
         engine = create_engine(db_url)
-
-        featured_charts_table.metadata.bind = engine
         inspector = inspect(engine)
         if not inspector.has_table('ckanext_c3charts_featured_charts'):
-            featured_charts_table.metadata.create_all(bind=engine)
+            _metadata.create_all(bind=engine)
             log.debug('Featured charts table created')
         else:
             log.debug('Featured charts table already exists')
@@ -92,7 +90,7 @@ def setup():
 
 def define_featured_charts_table():
     global featured_charts_table
-    featured_charts_table = Table('ckanext_c3charts_featured_charts', metadata,
+    featured_charts_table = Table('ckanext_c3charts_featured_charts', _metadata,
                               Column('id', types.UnicodeText, primary_key=True, default=make_uuid), # noqa
                               Column('resource_view_id', types.UnicodeText), # noqa
                               Column('resource_id', types.UnicodeText), # noqa
@@ -105,11 +103,9 @@ def define_featured_charts_table():
 
     db_url = config.get('sqlalchemy.url')
     engine = create_engine(db_url)
-    featured_charts_table.metadata.bind = engine
-
     inspector = inspect(engine)
     if not inspector.has_table('ckanext_c3charts_featured_charts'):
-        featured_charts_table.metadata.create_all(bind=engine)
+        _metadata.create_all(bind=engine)
         log.debug('Featured charts table created')
     else:
         log.debug('Featured charts table already exists')
